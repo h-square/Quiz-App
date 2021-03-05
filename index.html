@@ -5,8 +5,168 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz App</title>
+    <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-    
+    <div class="QuizAttempt_Wrapper">
+        <div class="container">
+            <div class="Quiz_QuestionWrapper">
+                <div class="Quiz_Header">
+                    <p class="Quiz_App_Title">Let's Quiz!</p>
+                    <div class="Timer_Countdown" style="display: flex;">
+                        <h4 font-size="20px" color="#3C4852" class="Timer_Countdown">
+                            &nbsp;02:&nbsp;50:&nbsp;32
+                        </h4>
+                    </div>
+                </div>
+                <div class="QuestionViewWrapper">
+                    <div class="QuestionAndOptions">
+                        <div class="QuestionAndOptions_Question">
+                            <div class="QuestionAndOptions_QuestionHeader">
+                                <p color="#808080" class="QuestionAndOptions_QuestionNumber">Question 1</p>
+                                <div class="QuestionAndOptions_QuestionAction">
+                                    <div class="ReportButton_Wrapper">
+                                        <p>Report</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-image-preview="true" class="QuestionText">
+                                <p style="vertical-align: middle; font-size: large; margin:0">
+                                    It's dark. You have ten grey socks and ten blue socks you want to put into pairs. 
+                                    All socks are exactly the same except for their colour. 
+                                    How many socks would you need to take with you to ensure you had at least a pair?
+                                </p>
+                            </div>
+                        </div>
+                        <div class="QuestionAndOptions_OptionsWrapper">
+                            <label>
+                                <div class="QuestionAndOptions_Option">
+                                    <span class="QuestionAndOptions_OptionSelector" aria-disabled="false" label>
+                                        <span class="QuestionAndOptions_OptionSelector_RadioButton">
+                                            <input class="" name="QuestionAndOptions_OptionSelector_group" id="answer-1" type="radio" value="1">
+                                            <!-- Can add effect for clicking -->
+                                        </span>
+                                    </span>
+                                    <div class="QuestionAndOptions_OptionText">
+                                        <p style="font-size: 1.5rem;">3</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label>
+                                <div class="QuestionAndOptions_Option">
+                                    <span class="QuestionAndOptions_OptionSelector" aria-disabled="false" label>
+                                        <span class="QuestionAndOptions_OptionSelector_RadioButton">
+                                            <input class="" name="QuestionAndOptions_OptionSelector_group" id="answer-2" type="radio" value="1">
+                                            <!-- Can add effect for clicking -->
+                                        </span>
+                                    </span>
+                                    <div class="QuestionAndOptions_OptionText">
+                                        <p style="font-size: 1.5rem;">16</p>
+                                    </div>
+                                </div>
+                            </label>
+                            <label>
+                            <div class="QuestionAndOptions_Option">
+                                <span class="QuestionAndOptions_OptionSelector" aria-disabled="false" label>
+                                    <span class="QuestionAndOptions_OptionSelector_RadioButton">
+                                        <input class="" name="QuestionAndOptions_OptionSelector_group" id="answer-3" type="radio" value="1">
+                                        <!-- Can add effect for clicking -->
+                                    </span>
+                                </span>
+                                <div class="QuestionAndOptions_OptionText">
+                                    <p style="font-size: 1.5rem;">8</p>
+                                </div>
+                            </div>
+                            </label>
+                            <label>
+                            <div class="QuestionAndOptions_Option">
+                                <span class="QuestionAndOptions_OptionSelector" aria-disabled="false" label>
+                                    <span class="QuestionAndOptions_OptionSelector_RadioButton">
+                                        <input class="" name="QuestionAndOptions_OptionSelector_group" id="answer-4" type="radio" value="1">
+                                    </span>
+                                </span>
+                                <div class="QuestionAndOptions_OptionText">
+                                    <p style="font-size: 1.5rem;">7</p>
+                                </div>
+                            </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="QuestionBottomButtons_ButtonsWrapper">
+                        <button type="button" aria-label="previous" class="QuestionBottomButtons_PrevButton">Previous</button>
+                        <div style="display: flex;">
+                            <button type="button" aria-label="mark" class="QuestionBottomButtons_MarkButton">
+                                Mark
+                            </button>
+                            <button type="button" aria-label="Save &amp; Next" class="QuestionBottomButtons_SaveAndNextButton">Save &amp; Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="Quiz_NavWrapper">
+                <div class="Quiz_NavWrapper_Fixed">
+                    <div class="Quiz_EndTest">
+                        <i class="instruction_icon"></i>
+                        <h6 color="#3C4852" class="Quiz_Title">Mock Test - 1</h6>
+                        <button type="button" aria-label="End test" class="Quiz_EndButton">End test</button>
+                    </div>
+                    <div class="Quiz_Nav">
+                        <div class="Quiz_Nav_Section">
+                            <div class="Quiz_Nav_SectionInfo">
+                                <div style="width: 100%;">
+                                    <h5 color="#3C4852" class="Quiz_Nav_SectionName">Mathematics</h5>
+                                    <div class="Quiz_Nav_SectionInstr">Attempt all</div>
+                                </div>
+                            </div>
+                            <div class="Quiz_Nav_QuestionSelectorBlock">
+                                <div class="Quiz_Nav_QuestionSelector">
+                                    <p color="#3C4852" class="Quiz_Nav_QuestionSelectorItem">1</p>
+                                </div>
+                                <div class="Quiz_Nav_QuestionSelector">
+                                    <p color="#3C4852" class="Quiz_Nav_QuestionSelectorItem">2</p>
+                                </div>
+                                <div class="Quiz_Nav_QuestionSelector">
+                                    <p color="#3C4852" class="Quiz_Nav_QuestionSelectorItem">3</p>
+                                </div>
+                                <div class="Quiz_Nav_QuestionSelector">
+                                    <p color="#3C4852" class="Quiz_Nav_QuestionSelectorItem">4</p>
+                                </div>
+                                <div class="Quiz_Nav_QuestionSelector">
+                                    <p color="#3C4852" class="Quiz_Nav_QuestionSelectorItem">5</p>
+                                </div>
+                                <div class="Quiz_Nav_QuestionSelector">
+                                    <p color="#3C4852" class="Quiz_Nav_QuestionSelectorItem">6</p>
+                                </div>
+                                <div class="Quiz_Nav_QuestionSelector">
+                                    <p color="#3C4852" class="Quiz_Nav_QuestionSelectorItem">7</p>
+                                </div>
+                                <div class="Quiz_Nav_QuestionSelector">
+                                    <p color="#3C4852" class="Quiz_Nav_QuestionSelectorItem">8</p>
+                                </div>
+                                <div class="Quiz_Nav_QuestionSelector">
+                                    <p color="#3C4852" class="Quiz_Nav_QuestionSelectorItem">9</p>
+                                </div>
+                                <div class="Quiz_Nav_QuestionSelector">
+                                    <p color="#3C4852" class="Quiz_Nav_QuestionSelectorItem">10</p>
+                                </div>
+                                <div class="Quiz_Nav_QuestionSelector">
+                                    <p color="#3C4852" class="Quiz_Nav_QuestionSelectorItem">11</p>
+                                </div>
+                                <div class="Quiz_Nav_QuestionSelector">
+                                    <p color="#3C4852" class="Quiz_Nav_QuestionSelectorItem">12</p>
+                                </div>
+                                <div class="Quiz_Nav_QuestionSelector">
+                                    <p color="#3C4852" class="Quiz_Nav_QuestionSelectorItem">13</p>
+                                </div>
+                                <div class="Quiz_Nav_QuestionSelector">
+                                    <p color="#3C4852" class="Quiz_Nav_QuestionSelectorItem">14</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

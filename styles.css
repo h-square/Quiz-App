@@ -1,0 +1,488 @@
+* {
+    box-sizing: border-box;
+    word-break: break-word;
+    outline: none;
+    text-decoration: none;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    font-family: AvertaStd,-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+html{
+    line-height: 1.15;
+    text-size-adjust: 100%;
+    font-size: 10px;
+}
+
+body{
+    background-color: rgb(252,252,252);
+    margin: 0;
+    overflow: auto;
+}
+
+div{
+    display: block;
+}
+
+.QuizAttempt_Wrapper{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    background-color: rgb(252, 252, 252);
+    width: 100vw;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container{
+    width: 136.6rem;
+    display: flex;
+    position: relative;
+}
+
+.Quiz_QuestionWrapper{
+    width: 95.62rem;
+    min-height: 100%;
+    background-color: rgb(252,252,252);
+}
+
+.Quiz_NavWrapper{
+    width: 40.98rem;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 16px 32px 0px rgba(221, 230, 237, 0.4);
+    border-radius: 4px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.Quiz_NavWrapper_Fixed{
+    position: fixed;
+    height: inherit;
+    width: inherit;
+}
+
+.Quiz_Header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 95.62rem;
+    top: 0px;
+    z-index: 2;
+    background-color: rgb(252, 252, 252);
+    padding: 2.4rem 5.6rem;
+}
+
+.Quiz_App_Title{
+    font-size: 3rem;
+    background-color: rgb(8, 189, 128);
+    color: white;
+    padding: 1rem;
+    box-shadow: 4px 4px 4px 2px royalblue;
+}
+
+.Timer_Countdown{
+    font-size: 2rem;
+    color:rgb(60, 72, 82);
+    font-weight: bold;
+    line-height: 150%;
+    margin: 0px;
+}
+
+.QuestionViewWrapper{
+    height: 100%;
+    padding: 12rem 5.6rem 0rem;
+}
+
+.QuestionAndOptions{
+    min-height: calc(100% - 9.5rem);
+}
+
+.QuestionAndOptions_Question{
+    background: #fff;
+    padding: 3.2rem;
+    margin-bottom: 2rem;
+    border-radius: 0.8rem;
+    box-shadow: 0px 16px 32px 0px rgba(221, 230, 237, 0.4);
+    margin-bottom: 2.4rem;
+    user-select: none;
+    border: 1px solid;
+}
+
+.QuestionAndOptions_QuestionHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.8rem;
+}
+
+.QuestionAndOptions_QuestionAction{
+    display: flex;
+    align-items: center;
+}
+
+.ReportButton_Wrapper{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.ReportButton_Wrapper > p{
+    font-weight: normal;
+    font-size: 1.5rem;
+    line-height: 150%;
+    margin: 0px;
+    color: rgb(60, 72, 82);
+}
+
+.QuestionAndOptions_QuestionNumber{
+    font-weight: normal;
+    font-size: 1.7rem;
+    line-height: 150%;
+    color: rgb(128, 128, 128);
+    margin: 0px;
+}
+
+.QuestionText{
+    color: rgb(60, 72, 82);
+}
+
+.QuestionText p{
+    line-height: 150%;
+    color: rgb(60, 72, 82);
+}
+
+.QuestionAndOptions_OptionsWrapper{
+    padding-bottom: 1.6rem;
+}
+
+.QuestionAndOptions_Option{
+    margin-bottom: 1.6rem;
+    color: rgba(0, 0, 0, 0.87);
+    padding: 2.4rem;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(221 230 237 / 40%) 0px 16px 32px 0px;
+    border-radius: 0.8rem;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    user-select: none;
+}
+
+.QuestionAndOptions_OptionSelector{
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    outline: 0;
+    position: relative;
+    align-items: center;
+    user-select: none;
+    vertical-align: middle;
+    justify-content: center;
+    text-decoration: none;
+    background-color: transparent;
+    flex: 0 0 auto;
+    overflow: visible;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 0px 16px 0px 0px;
+    color: rgb(60, 72, 82);
+}
+
+.QuestionAndOptions_OptionSelector_RadioButton{
+    width: 100%;
+    display: flex;
+    align-items: inherit;
+    justify-content: inherit;
+}
+
+input[type="radio" i] {
+    background-color: initial;
+    appearance: auto;
+    border: initial;
+}
+
+input{
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    overflow: visible;
+}
+
+[type="radio"] {
+    box-sizing: border-box;
+    padding: 0px;
+}
+
+.QuestionAndOptions_OptionText{
+    color: rgb(60, 72, 82);
+}
+
+.QuestionBottomButtons_ButtonsWrapper{
+    position: sticky;
+    width: 100%;
+    bottom: 0px;
+    height: 9.5rem;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 2.1rem 4rem;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(221 230 237 / 40%) -6px 0px 20px 0px;
+    transform: translateY(0px);
+    transition: transform 0.4s ease 0s;
+    border-radius: 0.4rem;
+    z-index: 3;
+}
+
+button{
+    font-family: inherit;
+    line-height: 1.15;
+    margin: 0px;
+    overflow: visible;
+    text-transform: none;
+}
+
+.QuestionBottomButtons_PrevButton{
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(240, 244, 247);
+    display: flex;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 12.8rem;
+    height: 4.8rem;
+    min-height: 4.8rem;
+    color: rgb(60, 72, 82);
+    user-select: none;
+    background-color: rgb(255, 255, 255);
+    height: 4.8rem;
+}
+
+.QuestionBottomButtons_MarkButton{
+    position: relative;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(240, 244, 247);
+    display: flex;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 12.8rem;
+    height: 4.8rem;
+    min-height: 4.8rem;
+    color: rgb(60, 72, 82);
+    user-select: none;
+    background-color: rgb(255, 255, 255);
+    margin-right: 1.6rem;
+}
+
+.QuestionBottomButtons_SaveAndNextButton{
+    position: relative;
+    border: none;
+    display: flex;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 17.6rem;
+    height: 4.8rem;
+    min-height: 4.8rem;
+    color: rgb(255, 255, 255);
+    user-select: none;
+    background-color: rgb(8, 189, 128);
+}
+
+.Quiz_EndTest{
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 7.8rem;
+    display: flex;
+    padding: 15px 24px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Quiz_Title{
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 150%;
+    overflow: hidden;
+    margin: 0px 12px;
+    flex: 1;
+    color: rgb(60, 72, 82);
+}
+
+.Quiz_EndButton{
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(240, 244, 247);
+    display: flex;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 12.8rem;
+    height: 4.8rem;
+    min-height: 4.8rem;
+    color: rgb(60, 72, 82);
+    user-select: none;
+    background-color: rgb(255, 255, 255);
+}
+
+.Quiz_Nav{
+    overflow: auto;
+    background-color: rgb(255, 255, 255);
+}
+
+.Quiz_Nav_Section{
+    position: relative;
+}
+
+.Quiz_Nav_SectionInfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0px;
+    background: rgb(255, 255, 255);
+    z-index: 1;
+    padding: 12px 24px;
+}
+
+.Quiz_Nav_SectionName{
+    font-weight: 600;
+    font-size: 1.6rem;
+    line-height: 150%;
+    margin: 0px;
+    width: 70%;
+    overflow: hidden;
+    color: rgb(60, 72, 82);
+}
+
+.Quiz_Nav_SectionInstr{
+    margin-top: 8px;
+    color: rgb(154, 175, 191);
+    font-size: 14px;
+}
+
+.Quiz_Nav_SectionSummaryRow{
+    display: flex;
+    align-items: center;
+    padding: 24px 24px 0px;
+}
+
+.Quiz_Nav_SectionSummary{
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+    margin-bottom: 16px;
+}
+
+.Quiz_Nav_SectionSummary_Dot-1{
+    height: 8px;
+    width: 8px;
+    border-radius: 4px;
+    background-color: rgb(143, 163, 178);
+    border-color: rgb(143, 163, 178);
+    border-width: 1px;
+    border-style: solid;
+    margin-right: 8px;
+}
+
+.Quiz_Nav_SectionSummary_Text-1{
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 150%;
+    margin: 0px;
+    color: rgb(60, 72, 82);
+}
+
+.Quiz_Nav_SectionSummary_Dot-2{
+    height: 8px;
+    width: 8px;
+    border-radius: 4px;
+    background-color: rgb(255, 173, 59);
+    border-color: rgb(255, 173, 59);
+    border-width: 1px;
+    border-style: solid;
+    margin-right: 8px;
+}
+
+.Quiz_Nav_SectionSummary_Text-2{
+    font-weight: normal;
+    font-size: 1.4rem;
+    line-height: 150%;
+    margin: 0px;
+    color: rgb(60, 72, 82);
+}
+
+.Quiz_Nav_SectionSummary_Dot-3{
+    height: 8px;
+    width: 8px;
+    border-radius: 4px;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(143, 163, 178);
+    border-width: 1px;
+    border-style: solid;
+    margin-right: 8px;
+}
+
+.Quiz_Nav_SectionSummary_Text-3{
+    font-weight: normal;
+    font-size: 1.4rem;
+    line-height: 150%;
+    margin: 0px;
+    color: rgb(60, 72, 82);
+}
+
+.Quiz_Nav_QuestionSelectorBlock{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 24px 0px;
+    opacity: 1;
+    pointer-events: auto;
+    padding-left: 2.4rem;
+}
+
+.Quiz_Nav_QuestionSelector{
+    height: 4rem;
+    width: 4rem;
+    border: 1px solid rgb(60, 72, 82);
+    border-radius: 4px;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.Quiz_Nav_QuestionSelectorItem{
+    font-weight: normal;
+    font-size: 1.4rem;
+    line-height: 150%;
+    color: rgb(60, 72, 82);
+    margin: 0px;
+}
