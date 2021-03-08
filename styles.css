@@ -1,7 +1,5 @@
 * {
     box-sizing: border-box;
-    word-break: break-word;
-    outline: none;
     text-decoration: none;
     margin: 0;
     -webkit-font-smoothing: antialiased;
@@ -20,15 +18,7 @@ body{
     overflow: auto;
 }
 
-div{
-    display: block;
-}
-
-.QuizAttempt_Wrapper{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 10;
+.quizAttemptWrapper{
     background-color: rgb(252, 252, 252);
     width: 100vw;
     overflow: auto;
@@ -43,13 +33,13 @@ div{
     position: relative;
 }
 
-.Quiz_QuestionWrapper{
+.quizQuestionWrapper{
     width: 95.62rem;
     min-height: 100%;
     background-color: rgb(252,252,252);
 }
 
-.Quiz_NavWrapper{
+.quizNavWrapper{
     width: 40.98rem;
     height: 100%;
     background-color: rgb(255, 255, 255);
@@ -60,13 +50,13 @@ div{
     right: 0px;
 }
 
-.Quiz_NavWrapper_Fixed{
+.quizNavWrapperFixed{
     position: fixed;
     height: inherit;
     width: inherit;
 }
 
-.Quiz_Header{
+.quizHeader{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -78,7 +68,7 @@ div{
     padding: 2.4rem 5.6rem;
 }
 
-.Quiz_App_Title{
+.quizAppTitle{
     font-size: 3rem;
     background-color: rgb(8, 189, 128);
     color: white;
@@ -86,24 +76,25 @@ div{
     box-shadow: 4px 4px 4px 2px royalblue;
 }
 
-.Timer_Countdown{
+.timerCountdown{
     font-size: 2rem;
     color:rgb(60, 72, 82);
     font-weight: bold;
     line-height: 150%;
     margin: 0px;
+    display: flex;
 }
 
-.QuestionViewWrapper{
+.questionViewWrapper{
     height: 100%;
     padding: 12rem 5.6rem 0rem;
 }
 
-.QuestionAndOptions{
+.questionAndOptions{
     min-height: calc(100% - 9.5rem);
 }
 
-.QuestionAndOptions_Question{
+.questionAndOptionsQuestion{
     background: #fff;
     padding: 3.2rem;
     margin-bottom: 2rem;
@@ -114,25 +105,25 @@ div{
     border: 1px solid;
 }
 
-.QuestionAndOptions_QuestionHeader{
+.questionAndOptionsQuestionHeader{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2.8rem;
 }
 
-.QuestionAndOptions_QuestionAction{
+.questionAndOptionsQuestionAction{
     display: flex;
     align-items: center;
 }
 
-.ReportButton_Wrapper{
+.reportButtonWrapper{
     display: flex;
     align-items: center;
     cursor: pointer;
 }
 
-.ReportButton_Wrapper > p{
+.reportButtonWrapper > p{
     font-weight: normal;
     font-size: 1.5rem;
     line-height: 150%;
@@ -140,7 +131,7 @@ div{
     color: rgb(60, 72, 82);
 }
 
-.QuestionAndOptions_QuestionNumber{
+#questionAndOptionsQuestionNumber{
     font-weight: normal;
     font-size: 1.7rem;
     line-height: 150%;
@@ -148,20 +139,19 @@ div{
     margin: 0px;
 }
 
-.QuestionText{
+#questionText{
     color: rgb(60, 72, 82);
-}
-
-.QuestionText p{
     line-height: 150%;
-    color: rgb(60, 72, 82);
+    vertical-align: middle; 
+    font-size: large; 
+    margin:0
 }
 
-.QuestionAndOptions_OptionsWrapper{
+.questionAndOptionsOptionsWrapper{
     padding-bottom: 1.6rem;
 }
 
-.QuestionAndOptions_Option{
+.questionAndOptionsOption{
     margin-bottom: 1.6rem;
     color: rgba(0, 0, 0, 0.87);
     padding: 2.4rem;
@@ -175,7 +165,7 @@ div{
     user-select: none;
 }
 
-.QuestionAndOptions_OptionSelector{
+.questionAndOptionsOptionSelector{
     border: 0;
     cursor: pointer;
     margin: 0;
@@ -195,36 +185,19 @@ div{
     color: rgb(60, 72, 82);
 }
 
-.QuestionAndOptions_OptionSelector_RadioButton{
+.questionAndOptionsOptionSelectorRadioButton{
     width: 100%;
     display: flex;
     align-items: inherit;
     justify-content: inherit;
 }
 
-input[type="radio" i] {
-    background-color: initial;
-    appearance: auto;
-    border: initial;
-}
-
-input{
-    font-family: inherit;
-    font-size: 100%;
-    line-height: 1.15;
-    overflow: visible;
-}
-
-[type="radio"] {
-    box-sizing: border-box;
-    padding: 0px;
-}
-
-.QuestionAndOptions_OptionText{
+.questionAndOptionsOptionText{
     color: rgb(60, 72, 82);
+    font-size: 1.7rem;
 }
 
-.QuestionBottomButtons_ButtonsWrapper{
+.questionBottomButtonsWrapper{
     position: sticky;
     width: 100%;
     bottom: 0px;
@@ -250,7 +223,7 @@ button{
     text-transform: none;
 }
 
-.QuestionBottomButtons_PrevButton{
+.questionBottomButtonsPrevButton{
     position: relative;
     border-width: 1px;
     border-style: solid;
@@ -271,7 +244,11 @@ button{
     height: 4.8rem;
 }
 
-.QuestionBottomButtons_MarkButton{
+.questionBottomButtonsMarkSaveAndNextButtonWrapper{
+    display: flex;
+}
+
+.questionBottomButtonsMarkButton{
     position: relative;
     border-width: 2px;
     border-style: solid;
@@ -292,7 +269,7 @@ button{
     margin-right: 1.6rem;
 }
 
-.QuestionBottomButtons_SaveAndNextButton{
+.questionBottomButtonsSaveAndNextButton{
     position: relative;
     border: none;
     display: flex;
@@ -310,7 +287,7 @@ button{
     background-color: rgb(8, 189, 128);
 }
 
-.Quiz_EndTest{
+.quizEndTest{
     background-color: rgb(255, 255, 255);
     width: 100%;
     height: 7.8rem;
@@ -320,7 +297,7 @@ button{
     align-items: center;
 }
 
-.Quiz_Title{
+.quizTitle{
     font-weight: 600;
     font-size: 1.4rem;
     line-height: 150%;
@@ -330,7 +307,7 @@ button{
     color: rgb(60, 72, 82);
 }
 
-.Quiz_EndButton{
+.quizEndButton{
     position: relative;
     border-width: 1px;
     border-style: solid;
@@ -350,16 +327,16 @@ button{
     background-color: rgb(255, 255, 255);
 }
 
-.Quiz_Nav{
+.quizNav{
     overflow: auto;
     background-color: rgb(255, 255, 255);
 }
 
-.Quiz_Nav_Section{
+.quizNavSection{
     position: relative;
 }
 
-.Quiz_Nav_SectionInfo{
+.quizNavSectionInfo{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -370,7 +347,7 @@ button{
     padding: 12px 24px;
 }
 
-.Quiz_Nav_SectionName{
+.quizNavSectionName{
     font-weight: 600;
     font-size: 1.6rem;
     line-height: 150%;
@@ -380,83 +357,26 @@ button{
     color: rgb(60, 72, 82);
 }
 
-.Quiz_Nav_SectionInstr{
+.quizNavSectionInstr{
     margin-top: 8px;
     color: rgb(154, 175, 191);
     font-size: 14px;
 }
 
-.Quiz_Nav_SectionSummaryRow{
+.quizNavSectionSummaryRow{
     display: flex;
     align-items: center;
     padding: 24px 24px 0px;
 }
 
-.Quiz_Nav_SectionSummary{
+.quizNavSectionSummary{
     display: flex;
     align-items: center;
     margin-right: 16px;
     margin-bottom: 16px;
 }
 
-.Quiz_Nav_SectionSummary_Dot-1{
-    height: 8px;
-    width: 8px;
-    border-radius: 4px;
-    background-color: rgb(143, 163, 178);
-    border-color: rgb(143, 163, 178);
-    border-width: 1px;
-    border-style: solid;
-    margin-right: 8px;
-}
-
-.Quiz_Nav_SectionSummary_Text-1{
-    font-weight: 600;
-    font-size: 1.4rem;
-    line-height: 150%;
-    margin: 0px;
-    color: rgb(60, 72, 82);
-}
-
-.Quiz_Nav_SectionSummary_Dot-2{
-    height: 8px;
-    width: 8px;
-    border-radius: 4px;
-    background-color: rgb(255, 173, 59);
-    border-color: rgb(255, 173, 59);
-    border-width: 1px;
-    border-style: solid;
-    margin-right: 8px;
-}
-
-.Quiz_Nav_SectionSummary_Text-2{
-    font-weight: normal;
-    font-size: 1.4rem;
-    line-height: 150%;
-    margin: 0px;
-    color: rgb(60, 72, 82);
-}
-
-.Quiz_Nav_SectionSummary_Dot-3{
-    height: 8px;
-    width: 8px;
-    border-radius: 4px;
-    background-color: rgb(255, 255, 255);
-    border-color: rgb(143, 163, 178);
-    border-width: 1px;
-    border-style: solid;
-    margin-right: 8px;
-}
-
-.Quiz_Nav_SectionSummary_Text-3{
-    font-weight: normal;
-    font-size: 1.4rem;
-    line-height: 150%;
-    margin: 0px;
-    color: rgb(60, 72, 82);
-}
-
-.Quiz_Nav_QuestionSelectorBlock{
+#quizNavQuestionSelectorBlock{
     display: flex;
     flex-wrap: wrap;
     margin: 24px 0px;
@@ -465,7 +385,9 @@ button{
     padding-left: 2.4rem;
 }
 
-.Quiz_Nav_QuestionSelector{
+.quizNavQuestionSelector{
+    background: rgb(255, 255, 255);
+    line-height: default;
     height: 4rem;
     width: 4rem;
     border: 1px solid rgb(60, 72, 82);
@@ -477,9 +399,10 @@ button{
     align-items: center;
     position: relative;
     cursor: pointer;
+    color: #3C4852;
 }
 
-.Quiz_Nav_QuestionSelectorItem{
+.quizNavQuestionSelectorItem{
     font-weight: normal;
     font-size: 1.4rem;
     line-height: 150%;
