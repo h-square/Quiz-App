@@ -12,7 +12,7 @@
             <div class="quizQuestionWrapper">
                 <div class="quizHeader">
                     <p class="quizAppTitle">Let's Quiz!</p>
-                    <h4 class="timerCountdown"> &nbsp;02:&nbsp;50:&nbsp;32 </h4>
+                    <h4 id="timerCountdown"></h4>
                 </div>
                 <div class="questionViewWrapper">
                     <div class="questionAndOptions">
@@ -36,7 +36,7 @@
                                 <div class="questionAndOptionsOption">
                                     <span class="questionAndOptionsOptionSelector" aria-disabled="false">
                                         <span class="questionAndOptionsOptionSelectorRadioButton">
-                                            <input name="questionAndOptionsOptionSelectorGroup" id="answer-1" type="radio">
+                                            <input name="questionAndOptionsOptionSelectorGroup" id="questionAndOptionsOptionSelected1" type="radio">
                                         </span>
                                     </span>
                                     <div class="questionAndOptionsOptionText">
@@ -48,7 +48,7 @@
                                 <div class="questionAndOptionsOption">
                                     <span class="questionAndOptionsOptionSelector" aria-disabled="false">
                                         <span class="questionAndOptionsOptionSelectorRadioButton">
-                                            <input name="questionAndOptionsOptionSelectorGroup" id="answer-2" type="radio">
+                                            <input name="questionAndOptionsOptionSelectorGroup" id="questionAndOptionsOptionSelected2" type="radio">
                                         </span>
                                     </span>
                                     <div class="questionAndOptionsOptionText">
@@ -60,7 +60,7 @@
                                 <div class="questionAndOptionsOption">
                                     <span class="questionAndOptionsOptionSelector" aria-disabled="false">
                                         <span class="questionAndOptionsOptionSelectorRadioButton">
-                                            <input name="questionAndOptionsOptionSelectorGroup" id="answer-3" type="radio">
+                                            <input name="questionAndOptionsOptionSelectorGroup" id="questionAndOptionsOptionSelected3" type="radio">
                                         </span>
                                     </span>
                                     <div class="questionAndOptionsOptionText">
@@ -72,7 +72,7 @@
                                 <div class="questionAndOptionsOption">
                                     <span class="questionAndOptionsOptionSelector" aria-disabled="false">
                                         <span class="questionAndOptionsOptionSelectorRadioButton">
-                                            <input name="questionAndOptionsOptionSelectorGroup" id="answer-4" type="radio">
+                                            <input name="questionAndOptionsOptionSelectorGroup" id="questionAndOptionsOptionSelected4" type="radio">
                                         </span>
                                     </span>
                                     <div class="questionAndOptionsOptionText">
@@ -83,12 +83,19 @@
                         </div>
                     </div>
                     <div class="questionBottomButtonsWrapper">
-                        <button class="questionBottomButtonsPrevButton">Previous</button>
+                        <button id="questionBottomButtonsPrevButton">
+                            <span class="prevButtonIcon"></span>
+                            Previous
+                        </button>
                         <div class="questionBottomButtonsMarkSaveAndNextButtonWrapper">
-                            <button  class="questionBottomButtonsMarkButton">
+                            <button id="questionBottomButtonsMarkButton">
+                                <span class="markButtonIcon"></span>
                                 Mark
                             </button>
-                            <button class="questionBottomButtonsSaveAndNextButton">Save &amp; Next</button>
+                            <button id="questionBottomButtonsNextButton">
+                                Next
+                                <span class="nextButtonIcon"></span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -96,7 +103,6 @@
             <div class="quizNavWrapper">
                 <div class="quizNavWrapperFixed">
                     <div class="quizEndTest">
-                        <i class="instruction_icon"></i>
                         <h6 class="quizTitle">Mock Test - 1</h6>
                         <button class="quizEndButton">End test</button>
                     </div>
@@ -106,6 +112,26 @@
                                 <div style="width: 100%;">
                                     <h5 color="#3C4852" class="quizNavSectionName">Mathematics</h5>
                                     <div class="quizNavSectionInstr">Attempt all</div>
+                                </div>
+                            </div>
+                            <div class="quizNavSectionSummaryRow">
+                                <div class="quizNavSectionSummary">
+                                    <div class="quizNavSectionSummaryDotAnswered"></div>
+                                    <h6 class="quizNavSectionSummaryText">
+                                        <!-- answered -->
+                                    </h6>
+                                </div>
+                                <div class="quizNavSectionSummary">
+                                    <div class="quizNavSectionSummaryDotMarked"></div>
+                                    <h6 class="quizNavSectionSummaryText">
+                                        <!-- marked -->
+                                    </h6>
+                                </div>
+                                <div class="quizNavSectionSummary">
+                                    <div class="quizNavSectionSummaryDotUnanswered"></div>
+                                    <h6 class="quizNavSectionSummaryText">
+                                        <!-- unanswered -->
+                                    </h6>
                                 </div>
                             </div>
                             <div id="quizNavQuestionSelectorBlock">

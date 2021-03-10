@@ -76,7 +76,7 @@ body{
     box-shadow: 4px 4px 4px 2px royalblue;
 }
 
-.timerCountdown{
+#timerCountdown{
     font-size: 2rem;
     color:rgb(60, 72, 82);
     font-weight: bold;
@@ -223,7 +223,7 @@ button{
     text-transform: none;
 }
 
-.questionBottomButtonsPrevButton{
+#questionBottomButtonsPrevButton{
     position: relative;
     border-width: 1px;
     border-style: solid;
@@ -244,11 +244,19 @@ button{
     height: 4.8rem;
 }
 
+.prevButtonIcon{
+    display: flex;
+    background-image: url("./Icons/prev-icon.png");
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-right: 1rem;
+}
+
 .questionBottomButtonsMarkSaveAndNextButtonWrapper{
     display: flex;
 }
 
-.questionBottomButtonsMarkButton{
+#questionBottomButtonsMarkButton{
     position: relative;
     border-width: 2px;
     border-style: solid;
@@ -269,7 +277,15 @@ button{
     margin-right: 1.6rem;
 }
 
-.questionBottomButtonsSaveAndNextButton{
+.markButtonIcon{
+    display: flex;
+    background-image: url("./Icons/mark-icon.png");
+    width: 2.4rem;
+    height: 2.4rem;
+    background-repeat: no-repeat;
+}
+
+#questionBottomButtonsNextButton{
     position: relative;
     border: none;
     display: flex;
@@ -279,12 +295,21 @@ button{
     align-items: center;
     cursor: pointer;
     border-radius: 4px;
-    width: 17.6rem;
+    width: 12.8rem;
     height: 4.8rem;
     min-height: 4.8rem;
     color: rgb(255, 255, 255);
     user-select: none;
     background-color: rgb(8, 189, 128);
+}
+
+.nextButtonIcon{
+    display: flex;
+    background-image: url("./Icons/next-icon.png");
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-left: 1rem;
+    background-repeat: no-repeat;
 }
 
 .quizEndTest{
@@ -375,6 +400,48 @@ button{
     margin-right: 16px;
     margin-bottom: 16px;
 }
+
+.quizNavSectionSummaryDotAnswered{
+    height: 8px;
+    width: 8px;
+    border-radius: 4px;
+    background-color: rgb(143, 163, 178);
+    border-color: rgb(143, 163, 178);
+    border-width: 1px;
+    border-style: solid;
+    margin-right: 8px;
+}
+
+.quizNavSectionSummaryDotMarked{
+    height: 8px;
+    width: 8px;
+    border-radius: 4px;
+    background-color: rgb(255, 173, 59);;
+    border-color: rgb(255, 173, 59);;
+    border-width: 1px;
+    border-style: solid;
+    margin-right: 8px;
+}
+
+.quizNavSectionSummaryDotUnanswered{
+    height: 8px;
+    width: 8px;
+    border-radius: 4px;
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(143, 163, 178);
+    border-width: 1px;
+    border-style: solid;
+    margin-right: 8px;
+}
+
+.quizNavSectionSummaryText{
+    font-weight: normal;
+    font-size: 1.5rem;
+    line-height: 150%;
+    margin: 0px;
+    color: rgb(60, 72, 82);
+}
+
 
 #quizNavQuestionSelectorBlock{
     display: flex;
