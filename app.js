@@ -84,7 +84,7 @@
     }
 
     (function handleBottomButtons(){
-        var prevButton = document.getElementById("questionBottomButtonsPrevButton");
+        const prevButton = document.getElementById("questionBottomButtonsPrevButton");
         prevButton.onclick = function(){
             if(currentQuestion > 1){
                 currentQuestion-=1;
@@ -92,7 +92,7 @@
             }
         }
 
-        var nextButton = document.getElementById("questionBottomButtonsNextButton");
+        const nextButton = document.getElementById("questionBottomButtonsNextButton");
         nextButton.onclick = function(){
             if(currentQuestion < questions.length){
                 currentQuestion +=1;
@@ -100,9 +100,58 @@
             }
         }
 
-        var markButton = document.getElementById("questionBottomButtonsMarkButton");
+        const clearButton = document.getElementById("questionBottomButtonsClearButton");
+        clearButton.onclick = function(){
+            var radioButton = document.getElementsByName("questionAndOptionsOptionSelectorGroup");
+            radioButton.forEach((e,index) => {
+                if(e.checked){
+                    e.checked = false;
+                    selectedOption[currentQuestion - 1] = null;
+                    answered -=1;
+                    loadSectionSummary();
+                    const questionSelector = document.getElementsByClassName("quizNavQuestionSelector")[currentQuestion-1];
+                    questionSelector.style.backgroundColor = "rgb(255, 255, 255)";
+                    questionSelector.style.color = "#3C4852";
+                }
+            })
+        }
+
+        const markButton = document.getElementById("questionBottomButtonsMarkButton");
         markButton.onclick = function(){
-            
+            const questionSelector = document.getElementsByClassName("quizNavQuestionSelector")[currentQuestion-1];
+            const bookmark = document.createElement("div");
+            //If question is not marked then mark it
+            if(questionSelector.childElementCount === 0){
+                bookmark.innerHTML = '<svg viewBox="0 0 24 24" class="bookmarkIcon"><path d="M19 21L12 16L5 21V5C5 3.89543 5.89543 3 7 3H17C18.1046 3 19 3.89543 19 5V21Z" fill="#FFAD3B" fill-rule="evenodd" clip-rule="evenodd" stroke="#FFAD3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
+                //assigning unique id to current icon to ease deletion
+                bookmark.firstChild.id = "bookmarkIconOfQuestion" + currentQuestion;
+                questionSelector.appendChild(bookmark.firstChild);
+                marked += 1;
+                loadSectionSummary();
+            }
+            else{
+                marked -= 1;
+                loadSectionSummary();
+                var bookmarkIconOfCurrentQuestion = document.getElementById("bookmarkIconOfQuestion" + currentQuestion);
+                questionSelector.removeChild(bookmarkIconOfCurrentQuestion);
+            }
+        }
+    })();
+
+    (function handleEndTestButton(){
+        var endTestButton = document.getElementById("quizEndButton");
+        endTestButton.onclick = function(){
+            var warning;
+            if(answered === questions.length){
+                warning = "You have answered all the questions!";
+            }
+            else{
+                warning = "You have not answered " + (questions.length - answered) + " questions!";
+            }
+            warning = warning + "\nAre you sure you want to end the test?"
+            if(confirm(warning)){
+                window.close();
+            }
         }
     })();
 })();
