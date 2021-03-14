@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz App</title>
     <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="quizAttemptWrapper">
@@ -84,17 +85,20 @@
                     </div>
                     <div class="questionBottomButtonsWrapper">
                         <button id="questionBottomButtonsPrevButton">
-                            <span class="prevButtonIcon"></span>
+                            <i class="fa fa-chevron-circle-left prevButtonIcon"></i>
                             Previous
                         </button>
-                        <div class="questionBottomButtonsMarkSaveAndNextButtonWrapper">
+                        <div class="questionBottomButtonsClearMarkNextButtonWrapper">
+                            <button id="questionBottomButtonsClearButton">
+                                Clear
+                            </button>
                             <button id="questionBottomButtonsMarkButton">
-                                <span class="markButtonIcon"></span>
+                                <i class="fa fa-bookmark-o markButtonIcon"></i>
                                 Mark
                             </button>
                             <button id="questionBottomButtonsNextButton">
                                 Next
-                                <span class="nextButtonIcon"></span>
+                                <i class="fa fa-chevron-circle-right nextButtonIcon"></i>
                             </button>
                         </div>
                     </div>
@@ -104,7 +108,7 @@
                 <div class="quizNavWrapperFixed">
                     <div class="quizEndTest">
                         <h6 class="quizTitle">Mock Test - 1</h6>
-                        <button class="quizEndButton">End test</button>
+                        <button id="quizEndButton">End test</button>
                     </div>
                     <div class="quizNav">
                         <div class="quizNavSection">
@@ -143,6 +147,7 @@
             </div>
         </div>
     </div>
-    <script src="app.js"></script>
+    <script src="./scripts/timerCountdown.js"></script>
+    <script src="./scripts/app.js"></script>
 </body>
 </html>

@@ -69,11 +69,12 @@ body{
 }
 
 .quizAppTitle{
+    font-family: Comic Sans MS, Comic Sans, cursive;
     font-size: 3rem;
     background-color: rgb(8, 189, 128);
     color: white;
     padding: 1rem;
-    box-shadow: 4px 4px 4px 2px royalblue;
+    box-shadow: 4px 4px 4px 2px darkslategray;
 }
 
 #timerCountdown{
@@ -204,7 +205,6 @@ body{
     height: 9.5rem;
     display: flex;
     align-items: center;
-    box-sizing: border-box;
     padding: 2.1rem 4rem;
     justify-content: space-between;
     background-color: rgb(255, 255, 255);
@@ -246,17 +246,14 @@ button{
 
 .prevButtonIcon{
     display: flex;
-    background-image: url("./Icons/prev-icon.png");
-    width: 2.4rem;
-    height: 2.4rem;
     margin-right: 1rem;
 }
 
-.questionBottomButtonsMarkSaveAndNextButtonWrapper{
+.questionBottomButtonsClearMarkNextButtonWrapper{
     display: flex;
 }
 
-#questionBottomButtonsMarkButton{
+#questionBottomButtonsClearButton, #questionBottomButtonsMarkButton{
     position: relative;
     border-width: 2px;
     border-style: solid;
@@ -279,10 +276,7 @@ button{
 
 .markButtonIcon{
     display: flex;
-    background-image: url("./Icons/mark-icon.png");
-    width: 2.4rem;
-    height: 2.4rem;
-    background-repeat: no-repeat;
+    margin-right: 1rem;
 }
 
 #questionBottomButtonsNextButton{
@@ -305,11 +299,7 @@ button{
 
 .nextButtonIcon{
     display: flex;
-    background-image: url("./Icons/next-icon.png");
-    width: 2.4rem;
-    height: 2.4rem;
     margin-left: 1rem;
-    background-repeat: no-repeat;
 }
 
 .quizEndTest{
@@ -326,13 +316,10 @@ button{
     font-weight: 600;
     font-size: 1.4rem;
     line-height: 150%;
-    overflow: hidden;
-    margin: 0px 12px;
-    flex: 1;
     color: rgb(60, 72, 82);
 }
 
-.quizEndButton{
+#quizEndButton{
     position: relative;
     border-width: 1px;
     border-style: solid;
@@ -347,7 +334,7 @@ button{
     width: 12.8rem;
     height: 4.8rem;
     min-height: 4.8rem;
-    color: rgb(60, 72, 82);
+    color: rgb(218, 20, 20);
     user-select: none;
     background-color: rgb(255, 255, 255);
 }
@@ -416,8 +403,8 @@ button{
     height: 8px;
     width: 8px;
     border-radius: 4px;
-    background-color: rgb(255, 173, 59);;
-    border-color: rgb(255, 173, 59);;
+    background-color: rgb(255, 173, 59);
+    border-color: rgb(255, 173, 59);
     border-width: 1px;
     border-style: solid;
     margin-right: 8px;
@@ -454,7 +441,6 @@ button{
 
 .quizNavQuestionSelector{
     background: rgb(255, 255, 255);
-    line-height: default;
     height: 4rem;
     width: 4rem;
     border: 1px solid rgb(60, 72, 82);
@@ -475,4 +461,12 @@ button{
     line-height: 150%;
     color: rgb(60, 72, 82);
     margin: 0px;
+}
+
+.bookmarkIcon{
+    width: 1.6rem;
+    height: 1.6rem;
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
 }
