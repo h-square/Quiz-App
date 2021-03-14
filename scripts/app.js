@@ -1,15 +1,15 @@
 (function (){
     //0-based indexed
-    var selectedOption = [];
+    let selectedOption = [];
 
     //1-based indexed
-    var currentQuestion = 1;
+    let currentQuestion = 1;
 
-    var questions;
-    var answered = 0, marked = 0;
+    let questions;
+    let answered = 0, marked = 0;
 
-    async function getQuestions(){
-        await fetch("./questions.json")
+    function getQuestions(){
+        fetch("./JSON/questions.json")
             .then(response => {
                 return response.json();
             })
@@ -20,9 +20,7 @@
                 setRadioButtonsMethod();
                 loadNavButtons();
             })
-            .catch(err =>{
-                console.log(err);
-            });
+            .catch(err => console.log(err));
     }
     getQuestions();
 
@@ -70,7 +68,7 @@
         var radioButton = document.getElementsByName("questionAndOptionsOptionSelectorGroup");
         radioButton.forEach((e,index) => {
             e.onclick = function(){
-                //check if question is marked for the first time
+                //check if question is selected for the first time
                 if(selectedOption[currentQuestion-1]===null){
                     answered += 1;
                     loadSectionSummary();

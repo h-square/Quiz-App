@@ -205,7 +205,6 @@ body{
     height: 9.5rem;
     display: flex;
     align-items: center;
-    box-sizing: border-box;
     padding: 2.1rem 4rem;
     justify-content: space-between;
     background-color: rgb(255, 255, 255);
