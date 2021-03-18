@@ -7,18 +7,20 @@
 
     let questions;
 
-    function getQuestions(){
-        fetch("./JSON/questions.json")
-            .then(response => response.json())
-            .then(data => {
-                questions = data;
-                loadQuestion(1);
-                sectionSummary.loadSectionSummary();
-                loadNavButtons();
-            })
-            .catch(err => console.log(err));
+    async function getQuestions(){
+        const res = await fetch("./JSON/questions.json");
+        if(res.status !== 200){
+            throw new Error('Can not fetch the questions!');
+        }
+        questions = await res.json();
     }
-    getQuestions();
+    getQuestions()
+        .then(() => {
+            loadQuestion(1);
+            sectionSummary.loadSectionSummary();
+            loadNavButtons();
+        })
+        .catch(err => console.log(err));
 
     function createHTMLForQuestion(number){
         const questionAndOptionsQuestion = document.createElement("div");
@@ -98,7 +100,7 @@
             else{
                 e.checked = false;
             }
-            e.onclick = function(){
+            e.addEventListener('click', function(){
                 //check if question is selected for the first time
                 if(selectedOptionOfQuestions[currentQuestion-1] === null){
                     sectionSummary.increamentNumberOfAnsweredQuestions();
@@ -106,7 +108,7 @@
                     changeBackgroundOfAnsweredQuestion();
                 }
                 selectedOptionOfQuestions[currentQuestion-1] = index;
-            }
+            }, true);
         })
     }
 
@@ -142,12 +144,12 @@
 
     function loadNavButtons(){
         for(let i=1; i<=questions.length;i++){
-            var btn = document.createElement("button");
+            const btn = document.createElement("button");
             btn.className = "quizNavQuestionSelector";
             btn.innerText = i;
-            btn.onclick = function(){
+            btn.addEventListener('click', function(){
                 loadQuestion(i);
-            };
+            },true);
             document.getElementById("quizNavQuestionSelectorBlock").appendChild(btn);
             selectedOptionOfQuestions.push(null);
         }
@@ -155,27 +157,27 @@
 
     (function handlePreviousButton(){
         const prevButton = document.getElementById("questionBottomButtonsPrevButton");
-        prevButton.onclick = function(){
+        prevButton.addEventListener('click', function(){
             if(currentQuestion > 1){
                 currentQuestion-=1;
                 loadQuestion(currentQuestion);
             }
-        }
+        },true);
     })();
 
     (function handleNextButton(){
         const nextButton = document.getElementById("questionBottomButtonsNextButton");
-        nextButton.onclick = function(){
+        nextButton.addEventListener('click', function(){
             if(currentQuestion < questions.length){
                 currentQuestion +=1;
                 loadQuestion(currentQuestion);
             }
-        }
+        },true);
     })();
 
     (function handleClearButton(){
         const clearButton = document.getElementById("questionBottomButtonsClearButton");
-        clearButton.onclick = function(){
+        clearButton.addEventListener('click', function(){
             var radioButton = document.getElementsByName("questionAndOptionsOptionSelectorGroup");
             radioButton.forEach((e,index) => {
                 if(e.checked){
@@ -185,12 +187,12 @@
                     changeBackgroundOfAnsweredQuestion();
                 }
             })
-        }
+        },true);
     })();
 
     (function handleMarkButton(){
         const markButton = document.getElementById("questionBottomButtonsMarkButton");
-        markButton.onclick = function(){
+        markButton.addEventListener('click', function(){
             const questionSelector = document.getElementsByClassName("quizNavQuestionSelector")[currentQuestion-1];
             const bookmark = document.createElement("div");
             //If question is not marked then mark it
@@ -206,12 +208,12 @@
                 questionSelector.removeChild(bookmarkIconOfCurrentQuestion);
                 sectionSummary.decreamentNumberOfMarkedQuestions();
             }
-        }
+        },true);
     })();
 
     (function handleEndTestButton(){
         var endTestButton = document.getElementById("quizEndButton");
-        endTestButton.onclick = function(){
+        endTestButton.addEventListener('click', function(){
             var warning;
             if(sectionSummary.getNumberOfAnsweredQuestions() === questions.length){
                 warning = "You have answered all the questions!";
@@ -223,6 +225,6 @@
             if(confirm(warning)){
                 window.close();
             }
-        }
+        },true);
     })();
 })();
