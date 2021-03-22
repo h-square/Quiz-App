@@ -7,7 +7,7 @@ let questionsView = {
     createQuestion : function(){
         const currentQuestion = questionsController.getCurrentQuestion();
         const questionAndOptionsQuestion = document.createElement("div");
-        questionAndOptionsQuestion.className = "questionAndOptionsQuestion";
+        questionAndOptionsQuestion.setAttribute("class","questionAndOptionsQuestion");
         questionAndOptionsQuestion.innerHTML = `
         <div class="questionAndOptionsQuestionHeader">
             <p id="questionAndOptionsQuestionNumber">`+ "Question " + currentQuestion.id +`</p>
@@ -23,7 +23,7 @@ let questionsView = {
     createOptions : function(){
         const currentQuestion = questionsController.getCurrentQuestion();
         const questionAndOptionsOptionsWrapper = document.createElement("div");
-        questionAndOptionsOptionsWrapper.className = "questionAndOptionsOptionsWrapper";
+        questionAndOptionsOptionsWrapper.setAttribute("id","questionAndOptionsOptionsWrapper");
         for(let i=0;i < currentQuestion.options.length; i++){
             questionAndOptionsOptionsWrapper.innerHTML += `
             <label>

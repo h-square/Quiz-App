@@ -13,6 +13,6 @@ async function fetchQuestions(){
 fetchQuestions()
     .then(questions => {
         questionsController.init(questions);
-        navController.init(questions.length);
+        navController.init();
     })
     .catch(err => console.log(err));
