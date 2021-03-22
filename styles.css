@@ -339,7 +339,7 @@ button{
     background-color: rgb(255, 255, 255);
 }
 
-.quizNav{
+#quizNav{
     overflow: auto;
     background-color: rgb(255, 255, 255);
 }
