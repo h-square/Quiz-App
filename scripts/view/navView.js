@@ -1,4 +1,5 @@
 import {navController} from "../controller/navController.js";
+import {ids} from "../registry.js";
 
 let navView = {
     renderSectionSummary : function(){
@@ -12,17 +13,17 @@ let navView = {
             const quizNavQuestionSelector = document.createElement("button");
             quizNavQuestionSelector.setAttribute("class","quizNavQuestionSelector");
             quizNavQuestionSelector.innerText = i;
-            document.getElementById("quizNavQuestionSelectorBlock").appendChild(quizNavQuestionSelector);
+            document.getElementById(ids.QUESTION_NAVIGATOR).appendChild(quizNavQuestionSelector);
         }
     },
     handleQuestionSelectors : function(){
-        document.getElementById("quizNavQuestionSelectorBlock").addEventListener('click', (e) =>{
+        document.getElementById(ids.QUESTION_NAVIGATOR).addEventListener('click', (e) =>{
             const idNumber = parseInt(e.target.innerText);
             navController.renderQuestion(idNumber);
         },true);
     },
     handleEndTestButton : function(){
-        const endTestButton = document.getElementById("quizEndButton");
+        const endTestButton = document.getElementById(ids.END_BUTTON);
         endTestButton.addEventListener('click', function(){
             let warning;
             if(navController.getNumberOfUnansweredQuestions() === 0){

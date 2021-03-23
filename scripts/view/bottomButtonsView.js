@@ -1,5 +1,6 @@
 import {questionsController} from "../controller/questionsController.js";
 import {navController} from "../controller/navController.js";
+import {ids} from "../registry.js";
 
 let bottomButtonsView = {
     init : function(){
@@ -9,19 +10,19 @@ let bottomButtonsView = {
         this.handleMarkButton();
     },
     handlePreviousButton : function (){
-        const prevButton = document.getElementById("questionBottomButtonsPrevButton");
+        const prevButton = document.getElementById(ids.PREV_BUTTON);
         prevButton.addEventListener('click', function(){
             questionsController.handlePreviousClick();
         },true);
     },
     handleNextButton : function (){
-        const nextButton = document.getElementById("questionBottomButtonsNextButton");
+        const nextButton = document.getElementById(ids.NEXT_BUTTON);
         nextButton.addEventListener('click', function(){
             questionsController.handleNextClick();
         },true);
     },
     handleClearButton : function (){
-        const clearButton = document.getElementById("questionBottomButtonsClearButton");
+        const clearButton = document.getElementById(ids.CLEAR_BUTTON);
         clearButton.addEventListener('click', function(){
             const radioButton = document.getElementsByName("questionAndOptionsOptionSelectorGroup");
             radioButton.forEach(e => {
@@ -34,7 +35,7 @@ let bottomButtonsView = {
         },true);
     },
     handleMarkButton : function (){
-        const markButton = document.getElementById("questionBottomButtonsMarkButton");
+        const markButton = document.getElementById(ids.MARK_BUTTON);
         markButton.addEventListener('click', function(){
             const currentQuestion = questionsController.getCurrentQuestion();
             const questionSelector = document.getElementsByClassName("quizNavQuestionSelector")[currentQuestion.id-1];

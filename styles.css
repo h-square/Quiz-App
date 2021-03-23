@@ -18,7 +18,7 @@ body{
     overflow: auto;
 }
 
-.quizAttemptWrapper{
+.container{
     background-color: rgb(252, 252, 252);
     width: 100vw;
     overflow: auto;
@@ -27,7 +27,7 @@ body{
     height: 100vh;
 }
 
-.container{
+.quizAttemptWrapper{
     width: 136.6rem;
     display: flex;
     position: relative;
@@ -268,9 +268,6 @@ button{
 
 #quizEndButton{
     position: relative;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(240, 244, 247);
     display: flex;
     justify-content: center;
     font-size: 1.6rem;
@@ -282,8 +279,14 @@ button{
     height: 4.8rem;
     min-height: 4.8rem;
     color: rgb(218, 20, 20);
+    border: 0.5px solid black;
     user-select: none;
     background-color: rgb(255, 255, 255);
+}
+
+#questionBottomButtonsPrevButton:hover, #questionBottomButtonsClearButton:hover, #questionBottomButtonsMarkButton:hover, #questionBottomButtonsNextButton:hover, #quizEndButton:hover{
+    transform: translateY(-1rem);
+    transition: transform 0.2s ease 0s;
 }
 
 #quizNav{

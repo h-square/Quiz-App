@@ -1,4 +1,5 @@
 import {questionsController} from "../controller/questionsController.js";
+import {ids} from "../registry.js";
 
 let questionsView = {
     init : function(){
@@ -45,7 +46,7 @@ let questionsView = {
         });
     },
     renderCurrentQuestion : function(){
-        const questionAndOptions = document.getElementById("questionAndOptions");
+        const questionAndOptions = document.getElementById(ids.QUESTIONS_AND_OPTIONS);
         const questionAndOptionsQuestion = this.createQuestion();
         const questionAndOptionsOptionsWrapper = this.createOptions();
         
