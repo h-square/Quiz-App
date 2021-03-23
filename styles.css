@@ -96,7 +96,7 @@ body{
 }
 
 .questionAndOptionsQuestion{
-    background: #fff;
+    background: #ffffff;
     padding: 3.2rem;
     margin-bottom: 2rem;
     border-radius: 0.8rem;
@@ -106,50 +106,20 @@ body{
     border: 1px solid;
 }
 
-.questionAndOptionsQuestionHeader{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2.8rem;
-}
-
-.questionAndOptionsQuestionAction{
-    display: flex;
-    align-items: center;
-}
-
-.reportButtonWrapper{
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.reportButtonWrapper > p{
-    font-weight: normal;
-    font-size: 1.5rem;
-    line-height: 150%;
-    margin: 0px;
-    color: rgb(60, 72, 82);
-}
-
 #questionAndOptionsQuestionNumber{
     font-weight: normal;
     font-size: 1.7rem;
     line-height: 150%;
     color: rgb(128, 128, 128);
-    margin: 0px;
+    margin-bottom: 1rem;
 }
 
 #questionText{
     color: rgb(60, 72, 82);
     line-height: 150%;
     vertical-align: middle; 
-    font-size: large; 
-    margin:0
-}
-
-#questionAndOptionsOptionsWrapper{
-    padding-bottom: 1.6rem;
+    font-size: large;
+    margin: 0;
 }
 
 .questionAndOptionsOption{
@@ -161,41 +131,18 @@ body{
     border-radius: 0.8rem;
     width: 100%;
     display: flex;
-    align-items: flex-start;
     cursor: pointer;
     user-select: none;
 }
 
 .questionAndOptionsOptionSelector{
-    border: 0;
-    cursor: pointer;
-    margin: 0;
-    outline: 0;
-    position: relative;
-    align-items: center;
-    user-select: none;
-    vertical-align: middle;
-    justify-content: center;
-    text-decoration: none;
-    background-color: transparent;
-    flex: 0 0 auto;
-    overflow: visible;
-    font-size: 1.5rem;
-    text-align: center;
-    padding: 0px 16px 0px 0px;
-    color: rgb(60, 72, 82);
-}
-
-.questionAndOptionsOptionSelectorRadioButton{
-    width: 100%;
-    display: flex;
-    align-items: inherit;
-    justify-content: inherit;
+    margin-right: 1.6rem;
+    font-size: 1.7rem;
 }
 
 .questionAndOptionsOptionText{
     color: rgb(60, 72, 82);
-    font-size: 1.7rem;
+    font-size: 1.8rem;
 }
 
 .questionBottomButtonsWrapper{

@@ -9,15 +9,8 @@ let questionsView = {
         const questionAndOptionsQuestion = document.createElement("div");
         questionAndOptionsQuestion.setAttribute("class","questionAndOptionsQuestion");
         questionAndOptionsQuestion.innerHTML = `
-        <div class="questionAndOptionsQuestionHeader">
             <p id="questionAndOptionsQuestionNumber">`+ "Question " + currentQuestion.id +`</p>
-            <div class="QuestionAndOptionsQuestionAction">
-                <div class="reportButtonWrapper">
-                    <p>Report</p>
-                </div>
-            </div>
-        </div>
-        <p id="questionText">` + currentQuestion.question + `</p>`;
+            <p id="questionText"> ${currentQuestion.question} </p>`;
         return questionAndOptionsQuestion;
     },
     createOptions : function(){
@@ -26,16 +19,10 @@ let questionsView = {
         questionAndOptionsOptionsWrapper.setAttribute("id","questionAndOptionsOptionsWrapper");
         for(let i=0;i < currentQuestion.options.length; i++){
             questionAndOptionsOptionsWrapper.innerHTML += `
-            <label>
-                <div class="questionAndOptionsOption">
-                    <span class="questionAndOptionsOptionSelector" aria-disabled="false">
-                        <span class="questionAndOptionsOptionSelectorRadioButton">
-                            <input name="questionAndOptionsOptionSelectorGroup" type="radio">
-                        </span>
-                    </span>
-                    <div class="questionAndOptionsOptionText">`+ currentQuestion.options[i].value +`</div>
-                </div>
-            </label>`;
+                <label class="questionAndOptionsOption">
+                    <input class="questionAndOptionsOptionSelector" name="questionAndOptionsOptionSelectorGroup" type="radio">
+                    <p class="questionAndOptionsOptionText">`+ currentQuestion.options[i].value +`</p>
+                </label>`;
         }
         return questionAndOptionsOptionsWrapper;
     },
