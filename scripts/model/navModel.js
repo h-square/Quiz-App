@@ -1,4 +1,4 @@
-let navModel = {
+const navModel = {
     answered : 0,
     marked : 0
 }

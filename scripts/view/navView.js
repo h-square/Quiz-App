@@ -1,42 +1,40 @@
 import {navController} from "../controller/navController.js";
 import {ids} from "../registry.js";
 
-let navView = {
+const navView = {
+    init : function(){
+        this.handleEndTestButton();
+        this.renderSectionSummary();
+        this.createQuestionsNavigator();
+        this.handleQuestionSelectors();
+    },
     renderSectionSummary : function(){
         const summary = document.getElementsByClassName("quizNavSectionSummaryText");
         summary[0].innerHTML = navController.getNumberOfAnsweredQuestions() + " answered";
         summary[1].innerHTML = navController.getNumberOfMarkedQuestions() + " marked";
         summary[2].innerHTML = navController.getNumberOfUnansweredQuestions() + " unanswered";
     },
-    createAndAppendNavButtons : function(){
-        for(let i=1; i<=navController.getNumberOfQuestions();i++){
+    createQuestionsNavigator : function(){
+        const questionsNavigator = document.getElementById(ids.QUESTION_NAVIGATOR);
+        const questions = navController.getAllQuestions();
+        questions.forEach((question) => {
             const quizNavQuestionSelector = document.createElement("button");
             quizNavQuestionSelector.setAttribute("class","quizNavQuestionSelector");
-            quizNavQuestionSelector.innerText = i;
-            document.getElementById(ids.QUESTION_NAVIGATOR).appendChild(quizNavQuestionSelector);
-        }
+            quizNavQuestionSelector.innerText = question.id;
+            questionsNavigator.appendChild(quizNavQuestionSelector);
+        });
     },
     handleQuestionSelectors : function(){
         document.getElementById(ids.QUESTION_NAVIGATOR).addEventListener('click', (e) =>{
             const idNumber = parseInt(e.target.innerText);
-            navController.renderQuestion(idNumber);
-        },true);
+            navController.goToQuestion(idNumber);
+        });
     },
     handleEndTestButton : function(){
         const endTestButton = document.getElementById(ids.END_BUTTON);
         endTestButton.addEventListener('click', function(){
-            let warning;
-            if(navController.getNumberOfUnansweredQuestions() === 0){
-                warning = "You have answered all the questions!";
-            }
-            else{
-                warning = "You have not answered " + (navController.getNumberOfUnansweredQuestions()) + " questions!";
-            }
-            warning = warning + "\nAre you sure you want to end the test?"
-            if(confirm(warning)){
-                window.close();
-            }
-        },true);
+            navController.showEndTestWarning();
+        });
     },
     changeColorOfQuestionSelector : function(){
         const currentQuestion = navController.getCurrentQuestion();
@@ -47,12 +45,6 @@ let navView = {
         else{
             questionSelector.setAttribute("style","background-color : rgb(230, 248, 242); color : rgb(8, 189, 128);");
         }
-    },
-    init : function(){
-        this.handleEndTestButton();
-        this.renderSectionSummary();
-        this.createAndAppendNavButtons();
-        this.handleQuestionSelectors();
     }
 }
 

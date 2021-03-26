@@ -1,7 +1,7 @@
 import {questionsController} from "../controller/questionsController.js";
 import {ids} from "../registry.js";
 
-let questionsView = {
+const questionsView = {
     init : function(){
         this.renderCurrentQuestion();
     },
@@ -18,13 +18,13 @@ let questionsView = {
         const currentQuestion = questionsController.getCurrentQuestion();
         const questionAndOptionsOptionsWrapper = document.createElement("div");
         questionAndOptionsOptionsWrapper.setAttribute("id","questionAndOptionsOptionsWrapper");
-        for(let i=0;i < currentQuestion.options.length; i++){
-            questionAndOptionsOptionsWrapper.innerHTML += `
-                <label class="questionAndOptionsOption">
-                    <input class="questionAndOptionsOptionSelector" name="questionAndOptionsOptionSelectorGroup" type="radio">
-                    <p class="questionAndOptionsOptionText">`+ currentQuestion.options[i].value +`</p>
-                </label>`;
-        }
+        questionAndOptionsOptionsWrapper.innerHTML = currentQuestion.options.reduce((total, option)=>{
+            return total +
+            `<label class="questionAndOptionsOption">
+                <input class="questionAndOptionsOptionSelector" name="questionAndOptionsOptionSelectorGroup" type="radio">
+                <p class="questionAndOptionsOptionText">`+ option.value +`</p>
+            </label>`;
+        },"");
         return questionAndOptionsOptionsWrapper;
     },
     renderRadioButtons : function(){
@@ -49,16 +49,9 @@ let questionsView = {
         const questionAndOptions = document.getElementById(ids.QUESTIONS_AND_OPTIONS);
         const questionAndOptionsQuestion = this.createQuestion();
         const questionAndOptionsOptionsWrapper = this.createOptions();
-        
-        //update the view
-        if(questionAndOptions.childElementCount === 0){
-            questionAndOptions.appendChild(questionAndOptionsQuestion);
-            questionAndOptions.appendChild(questionAndOptionsOptionsWrapper);
-        }
-        else{
-            questionAndOptions.replaceChild(questionAndOptionsQuestion, questionAndOptions.children[0]);
-            questionAndOptions.replaceChild(questionAndOptionsOptionsWrapper, questionAndOptions.children[1]);
-        }
+        questionAndOptions.innerHTML = "";
+        questionAndOptions.appendChild(questionAndOptionsQuestion);
+        questionAndOptions.appendChild(questionAndOptionsOptionsWrapper);
         this.renderRadioButtons();
     }
 }

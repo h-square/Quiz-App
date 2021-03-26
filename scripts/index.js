@@ -7,8 +7,8 @@ async function fetchQuestions(){
     if(res.status !== 200){
         throw new Error('Can not fetch the questions!');
     }
-    let questions = null;
-    return questions = await res.json();
+    const questions = await res.json();
+    return questions;
 }
 
 fetchQuestions()

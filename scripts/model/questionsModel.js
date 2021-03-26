@@ -1,4 +1,4 @@
-let questionsModel = {
+const questionsModel = {
     questions : null,
     currentQuestion : null,
     selectedOptionOfQuestions : [],

@@ -3,13 +3,21 @@ import {questionsView} from "../view/questionsView.js";
 import {navController} from "./navController.js";
 import {bottomButtonsView} from "../view/bottomButtonsView.js";
 
-let questionsController = {
+const questionsController = {
+    init : function(questions){
+        questionsModel.init(questions);
+        questionsView.init();
+        bottomButtonsView.init();
+    },
     getCurrentQuestion : function(){
         return questionsModel.currentQuestion;
     },
     setCurrentQuestion : function(idNumber){
         questionsModel.currentQuestion = questionsModel.questions[idNumber-1];
         questionsView.renderCurrentQuestion();
+    },
+    getAllQuestions : function(){
+        return questionsModel.questions;
     },
     getNumberOfQuestions : function(){
         return questionsModel.questions.length;
@@ -34,11 +42,6 @@ let questionsController = {
         if(currentQuestion.id < this.getNumberOfQuestions()){
             this.setCurrentQuestion(currentQuestion.id + 1);
         }
-    },
-    init : function(questions){
-        questionsModel.init(questions);
-        questionsView.init();
-        bottomButtonsView.init();
     }
 }
 

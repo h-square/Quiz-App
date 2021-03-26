@@ -1,8 +1,9 @@
 import {questionsController} from "../controller/questionsController.js";
 import {navController} from "../controller/navController.js";
-import {ids} from "../registry.js";
+import {icons, ids} from "../registry.js";
+import { bottomButtonsController } from "../controller/bottomButtonsController.js";
 
-let bottomButtonsView = {
+const bottomButtonsView = {
     init : function(){
         this.handlePreviousButton();
         this.handleNextButton();
@@ -13,47 +14,43 @@ let bottomButtonsView = {
         const prevButton = document.getElementById(ids.PREV_BUTTON);
         prevButton.addEventListener('click', function(){
             questionsController.handlePreviousClick();
-        },true);
+        });
     },
     handleNextButton : function (){
         const nextButton = document.getElementById(ids.NEXT_BUTTON);
         nextButton.addEventListener('click', function(){
             questionsController.handleNextClick();
-        },true);
+        });
     },
     handleClearButton : function (){
         const clearButton = document.getElementById(ids.CLEAR_BUTTON);
         clearButton.addEventListener('click', function(){
             const radioButton = document.getElementsByName("questionAndOptionsOptionSelectorGroup");
-            radioButton.forEach(e => {
-                if(e.checked){
-                    e.checked = false;
-                    questionsController.setSelectedOptionOfCurrentQuestion(null);
-                    navController.decrementNumberOfAnsweredQuestions();
-                }
-            })
-        },true);
+            bottomButtonsController.clearCheckedOption(radioButton);
+        });
+    },
+    createBookmarkIconOfQuestion : function(idNumber){
+        const bookmark = document.createElement("div");
+        bookmark.innerHTML = icons.coloredBookmarkIcon;
+        bookmark.firstChild.id = "bookmarkIconOfQuestion" + idNumber;
+        return bookmark.firstChild;
     },
     handleMarkButton : function (){
         const markButton = document.getElementById(ids.MARK_BUTTON);
-        markButton.addEventListener('click', function(){
-            const currentQuestion = questionsController.getCurrentQuestion();
+        markButton.addEventListener('click', ()=>{
+            const currentQuestion = bottomButtonsController.getCurrentQuestion();
             const questionSelector = document.getElementsByClassName("quizNavQuestionSelector")[currentQuestion.id-1];
-            const bookmark = document.createElement("div");
+            const bookmarkIconOfCurrentQuestion = this.createBookmarkIconOfQuestion(currentQuestion.id);
             //If question is not marked then mark it
             if(questionSelector.childElementCount === 0){
-                bookmark.innerHTML = '<svg viewBox="0 0 24 24" class="bookmarkIcon"><path d="M19 21L12 16L5 21V5C5 3.89543 5.89543 3 7 3H17C18.1046 3 19 3.89543 19 5V21Z" fill="#FFAD3B" fill-rule="evenodd" clip-rule="evenodd" stroke="#FFAD3B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>';
-                //assigning unique id to current icon to ease deletion
-                bookmark.firstChild.id = "bookmarkIconOfQuestion" + currentQuestion.id;
-                questionSelector.appendChild(bookmark.firstChild);
-                navController.incrementNumberOfMarkedQuestions();
+                questionSelector.appendChild(bookmarkIconOfCurrentQuestion);
+                bottomButtonsController.incrementNumberOfMarkedQuestions();
             }
             else{
-                const bookmarkIconOfCurrentQuestion = document.getElementById("bookmarkIconOfQuestion" + currentQuestion.id);
-                questionSelector.removeChild(bookmarkIconOfCurrentQuestion);
-                navController.decrementNumberOfMarkedQuestions();
+                questionSelector.innerHTML = currentQuestion.id;
+                bottomButtonsController.decrementNumberOfMarkedQuestions();
             }
-        },true);
+        });
     }
 }
 
