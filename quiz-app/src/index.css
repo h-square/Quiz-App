@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  font-family: AvertaStd,-apple-system,BlinkMacSystemFont,sans-serif;
+}
+
+html{
+  line-height: 1.15;
+  text-size-adjust: 100%;
+  font-size: 10px;
+}
+
+body{
+  background-color: rgb(252,252,252);
+  margin: 0;
+  overflow: auto;
+}
