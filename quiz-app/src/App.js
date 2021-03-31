@@ -66,9 +66,11 @@ class App extends Component{
 	}
 
 	decrementNumberOfAnsweredQuestions(){
-		this.setState((state)=>({
-			answeredCount : state.answeredCount - 1
-		}));
+		if(this.state.selectedOptionOfQuestions[this.state.currentQuestion.id - 1] !== null){
+			this.setState((state)=>({
+				answeredCount : state.answeredCount - 1
+			}));
+		}
 	}
 
 	toggleMarkOfCurrentQuestion(){

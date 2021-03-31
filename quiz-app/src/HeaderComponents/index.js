@@ -6,7 +6,7 @@ function Header(){
     return(
         <div className="quizHeader">
             <p className="quizAppTitle">Let's Quiz!</p>
-            {/* <TimerCountDown/> */}
+            <TimerCountDown/>
         </div>
     );
 }
