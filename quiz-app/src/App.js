@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
 
 import Header from './HeaderComponents/index.js';
@@ -8,7 +8,7 @@ import NavHeader from './NavComponents/NavHeader.js';
 import NavSectionSummary from './NavComponents/NavSectionSummary.js';
 import QuestionSelectorGrid from './NavComponents/QuestionSelectorGrid.js';
 
-class App extends Component{
+class App extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
@@ -31,7 +31,7 @@ class App extends Component{
 		fetch('./JSON/questions.json')
 			.then( response => response.json())
 			.then( (data) => {
-				let selectedOptionOfQuestions = [];
+				const selectedOptionOfQuestions = [];
 				data.forEach((element) => {
 					selectedOptionOfQuestions.push(null);
 					element.marked = false;
@@ -39,36 +39,45 @@ class App extends Component{
 				this.setState({
 					questions : data,
 					currentQuestion : data[0],
-					selectedOptionOfQuestions : selectedOptionOfQuestions,
-					loading : false
+					selectedOptionOfQuestions : selectedOptionOfQuestions
 				});
-			});
+			})
+			.catch( err=>{
+				console.log(err);
+			})
+			.finally( ()=>{
+				this.setState({
+					loading : false
+				})
+			} );
 	}
 
 	setCurrentQuestion(idNumber){
-		this.setState((state)=>({
-			currentQuestion : state.questions[idNumber-1]
-		}));
+		if(idNumber>=1 && idNumber<=this.state.questions.length){
+			this.setState((state)=>({
+				currentQuestion : state.questions[idNumber-1]
+			}));
+		}
 	}
 
 	setSelectedOptionOfCurrentQuestion(optionID){
 		const selectedOptionOfQuestions = this.state.selectedOptionOfQuestions;
 		selectedOptionOfQuestions[this.state.currentQuestion.id - 1] = optionID;
-		this.setState({
+		this.setState(prevState => ({
 			selectedOptionOfCurrentQuestion : selectedOptionOfQuestions
-		});
+		}));
 	}
 
 	incrementNumberOfAnsweredQuestions(){
-		this.setState((state)=>({
-			answeredCount : state.answeredCount + 1
+		this.setState((prevState)=>({
+			answeredCount : prevState.answeredCount + 1
 		}));
 	}
 
 	decrementNumberOfAnsweredQuestions(){
 		if(this.state.selectedOptionOfQuestions[this.state.currentQuestion.id - 1] !== null){
-			this.setState((state)=>({
-				answeredCount : state.answeredCount - 1
+			this.setState((prevState)=>({
+				answeredCount : prevState.answeredCount - 1
 			}));
 		}
 	}
@@ -102,25 +111,42 @@ class App extends Component{
 				<div className="quizAttemptWrapper">
 					<div className="quizQuestionWrapper">
 						<Header />
-						<QuestionWrapper questions={this.state.questions} currentQuestion={this.state.currentQuestion} selectedOptionOfQuestions={this.state.selectedOptionOfQuestions}
-							incrementNumberOfAnsweredQuestions={this.incrementNumberOfAnsweredQuestions} setSelectedOptionOfCurrentQuestion={this.setSelectedOptionOfCurrentQuestion}
+						<QuestionWrapper 
+							questions={this.state.questions} 
+							currentQuestion={this.state.currentQuestion} 
+							selectedOptionOfQuestions={this.state.selectedOptionOfQuestions}
+							incrementNumberOfAnsweredQuestions={this.incrementNumberOfAnsweredQuestions} 
+							setSelectedOptionOfCurrentQuestion={this.setSelectedOptionOfCurrentQuestion}
 						/>
-						<QuestionActionButtons currentQuestion={this.state.currentQuestion} numberOfQuestions={this.state.questions.length} 
-						setCurrentQuestion={this.setCurrentQuestion} setSelectedOptionOfCurrentQuestion={this.setSelectedOptionOfCurrentQuestion}
-						decrementNumberOfAnsweredQuestions={this.decrementNumberOfAnsweredQuestions} toggleMarkOfCurrentQuestion={this.toggleMarkOfCurrentQuestion}/>
+						<QuestionActionButtons 
+							currentQuestion={this.state.currentQuestion} 
+							numberOfQuestions={this.state.questions.length} 
+							setCurrentQuestion={this.setCurrentQuestion} 
+							setSelectedOptionOfCurrentQuestion={this.setSelectedOptionOfCurrentQuestion}
+							decrementNumberOfAnsweredQuestions={this.decrementNumberOfAnsweredQuestions} 
+							toggleMarkOfCurrentQuestion={this.toggleMarkOfCurrentQuestion}
+						/>
 					</div>
 					<div className="quizNavWrapper">
 						<div className="quizNavWrapperFixed">
-							<NavHeader unansweredCount={this.state.questions.length - this.state.answeredCount}/>
+							<NavHeader 
+								unansweredCount={this.state.questions.length - this.state.answeredCount}
+							/>
 							<div id="quizNav">
                         		<div className="quizNavSection">
 									<div className="quizNavSectionInfo">
 										<h5 className="quizNavSectionName">Mathematics</h5>
 									</div>
-									<NavSectionSummary answeredCount={this.state.answeredCount} markedCount={this.state.markedCount} 
-									unansweredCount={this.state.questions.length - this.state.answeredCount}/>
-									<QuestionSelectorGrid questions={this.state.questions} selectedOptionOfQuestions={this.state.selectedOptionOfQuestions}
-									setCurrentQuestion={this.setCurrentQuestion}/>
+									<NavSectionSummary 
+										answeredCount={this.state.answeredCount} 
+										markedCount={this.state.markedCount} 
+										unansweredCount={this.state.questions.length - this.state.answeredCount}
+									/>
+									<QuestionSelectorGrid 
+										questions={this.state.questions} 
+										selectedOptionOfQuestions={this.state.selectedOptionOfQuestions}
+										setCurrentQuestion={this.setCurrentQuestion}
+									/>
 								</div>
 							</div>
 						</div>

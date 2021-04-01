@@ -1,5 +1,4 @@
 import React from 'react';
-import '../App.css';
 
 class Options extends React.Component{
     constructor(props){
@@ -19,8 +18,13 @@ class Options extends React.Component{
         const options = this.props.currentQuestion.options.map((option,index)=>{
             return(
                 <label key={index} className="questionAndOptionsOption">
-                    <input className="questionAndOptionsOptionSelector" name="questionAndOptionsOptionSelectorGroup" type="radio" 
-                    value={index} onClick={this.handleRadioButtons} checked={this.props.selectedOptionOfQuestions[this.props.currentQuestion.id - 1]===index} onChange={()=>{}}/>
+                    <input 
+                        className="questionAndOptionsOptionSelector" 
+                        name="questionAndOptionsOptionSelectorGroup" 
+                        type="radio" 
+                        value={index} 
+                        onChange={this.handleRadioButtons} 
+                        checked={this.props.selectedOptionOfQuestions[this.props.currentQuestion.id - 1]===index}/>
                     <p className="questionAndOptionsOptionText">{option.value}</p>
                 </label>
             );

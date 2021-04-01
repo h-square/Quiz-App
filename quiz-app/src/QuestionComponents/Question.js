@@ -1,21 +1,12 @@
-import React, {Component} from 'react';
-import '../App.css';
+import React from 'react';
 
-class Question extends Component{
-    // constructor(props){
-    //     super(props);
-    // }
-    render(){
-        const question = <div className="questionAndOptionsQuestion">
-            <p id="questionAndOptionsQuestionNumber">Question {this.props.currentQuestion.id}</p>
-            <p id="questionText">{this.props.currentQuestion.question}</p>
-        </div>;
-        return(
-            <div>
-                {question}
-            </div>
-        );
-    }
+function Question(props){
+    return(
+        <div className="questionAndOptionsQuestion">
+            <p id="questionAndOptionsQuestionNumber">Question {props.currentQuestion.id}</p>
+            <p id="questionText">{props.currentQuestion.question}</p>
+        </div>
+    );
 }
 
 export default Question;

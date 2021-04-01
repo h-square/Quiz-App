@@ -1,5 +1,4 @@
 import React from 'react';
-import '../App.css'
 import {nanoid} from 'nanoid';
 
 class QuestionSelectorGrid extends React.Component{

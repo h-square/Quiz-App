@@ -1,14 +1,11 @@
-import React, {Component} from 'react';
-import '../App.css';
+import React from 'react';
 
-class TimerCountDown extends Component{
+class TimerCountDown extends React.Component{
     constructor(props){
         super(props);
 
         this.state = {
-            hours : 3,
-            minutes : 0,
-            seconds : 0
+            remainingSeconds : 3*60*60
         }
 
         this.subtractASecond = this.subtractASecond.bind(this);
@@ -20,39 +17,23 @@ class TimerCountDown extends Component{
 
     componentWillUnmount(){
         clearInterval(this.timer);
-        alert("Your time is up!")
-        //close the test after time after timer ends
-        window.close();
     }
     
     subtractASecond(){
-        let seconds = this.state.seconds;
-        let minutes = this.state.minutes;
-        let hours = this.state.hours;
-        seconds-=1;
-        if(seconds < 0){
-            seconds = 59;
-            minutes-=1;
-            if(minutes < 0){
-                minutes = 59;
-                hours-=1;
-                if(hours < 0){
-                    clearInterval(this.timer);
-                    alert("Your time is up!")
-                    //close the test after time after timer ends
-                    window.close();
-                }
-            }
-        }
-        this.setState({
-            seconds : seconds,
-            minutes : minutes,
-            hours : hours
-        })
+        this.setState((prevState)=>({
+            remainingSeconds : prevState.remainingSeconds -1
+        }))
     };
 
     render(){
-        const timeLeft = ("0" + this.state.hours).slice(-2) + " : " + ("0" + this.state.minutes).slice(-2) + " : " + ("0" + this.state.seconds).slice(-2);
+        if(this.state.remainingSeconds < 0){
+            clearInterval(this.timer);
+            window.close();
+        }
+        const hours = Math.floor(this.state.remainingSeconds/3600);
+        const minutes = (Math.floor(this.state.remainingSeconds/60))%60;
+        const seconds = this.state.remainingSeconds%60;
+        const timeLeft = ("0" + hours).slice(-2) + " : " + ("0" + minutes).slice(-2) + " : " + ("0" + seconds).slice(-2);
         return(
             <div id="timerCountdown">
                 {timeLeft}

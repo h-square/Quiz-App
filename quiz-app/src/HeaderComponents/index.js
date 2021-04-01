@@ -1,5 +1,4 @@
 import React from 'react';
-import "../App.css";
 import TimerCountDown from './TimerCountdown.js';
 
 function Header(){
