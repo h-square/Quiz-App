@@ -1,24 +1,25 @@
 import React from 'react';
 
 function NavSectionSummary(props){
+    const {answeredCount, markedCount, unansweredCount} = props;
     return(
         <div className="quizNavSectionSummaryRow">
             <div className="quizNavSectionSummary">
                 <div className="quizNavSectionSummaryDotAnswered"></div>
                 <h6 className="quizNavSectionSummaryText">
-                    {props.answeredCount} answered
+                    {answeredCount} answered
                 </h6>
             </div>
             <div className="quizNavSectionSummary">
                 <div className="quizNavSectionSummaryDotMarked"></div>
                 <h6 className="quizNavSectionSummaryText">
-                    {props.markedCount} marked
+                    {markedCount} marked
                 </h6>
             </div>
             <div className="quizNavSectionSummary">
                 <div className="quizNavSectionSummaryDotUnanswered"></div>
                 <h6 className="quizNavSectionSummaryText">
-                    {props.unansweredCount} unanswered
+                    {unansweredCount} unanswered
                 </h6>
             </div>
         </div>

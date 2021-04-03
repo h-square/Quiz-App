@@ -1,10 +1,11 @@
 import React from 'react';
 
 function Question(props){
+    const {questionNumber, questionText} = props;
     return(
         <div className="questionAndOptionsQuestion">
-            <p id="questionAndOptionsQuestionNumber">Question {props.currentQuestion.id}</p>
-            <p id="questionText">{props.currentQuestion.question}</p>
+            <p id="questionAndOptionsQuestionNumber">Question {questionNumber}</p>
+            <p id="questionText">{questionText}</p>
         </div>
     );
 }

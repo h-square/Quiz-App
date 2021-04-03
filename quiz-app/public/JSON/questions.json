@@ -88,7 +88,8 @@
                 "id" : 4,
                 "value" : "F is differentiable only at the origin"
             }
-        ]
+        ],
+        "answer":1
     },
     {
         "id" : 5,
@@ -110,7 +111,8 @@
                 "id" : 4,
                 "value" : 5
             }
-        ]
+        ],
+        "answer":1
     },
     {
         "id" : 6,
@@ -132,7 +134,8 @@
                 "id" : 4,
                 "value" : "6√5"
             }
-        ]
+        ],
+        "answer":1
     },
     {
         "id" : 7,
@@ -154,7 +157,8 @@
                 "id" : 4,
                 "value" : "x² + y² - 6x – 4y + 19 = 0"
             }
-        ]
+        ],
+        "answer":1
     },
     {
         "id" : 8,
@@ -176,6 +180,7 @@
                 "id" : 4,
                 "value" : "It has infinitely many solutions"
             }
-        ]
+        ],
+        "answer":1
     }
 ]

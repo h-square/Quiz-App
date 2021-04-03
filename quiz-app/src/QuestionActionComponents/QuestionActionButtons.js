@@ -5,28 +5,45 @@ import MarkButton from './MarkButton';
 import NextButton from './NextButton';
 import PreviousButton from './PreviousButton';
 
-function QuestionActionButtons(props){
-    return(
-        <div className="questionBottomButtonsWrapper">
-            <PreviousButton 
-                currentQuestion={props.currentQuestion} 
-                setCurrentQuestion={props.setCurrentQuestion}/>
-            <div className="questionBottomButtonsClearMarkNextButtonWrapper">
-                <ClearButton 
-                    setSelectedOptionOfCurrentQuestion={props.setSelectedOptionOfCurrentQuestion} 
-                    decrementNumberOfAnsweredQuestions={props.decrementNumberOfAnsweredQuestions}
-                />
-                <MarkButton 
-                    toggleMarkOfCurrentQuestion={props.toggleMarkOfCurrentQuestion}
-                />
-                <NextButton 
-                    currentQuestion={props.currentQuestion} 
-                    numberOfQuestions={props.numberOfQuestions}
-                    setCurrentQuestion={props.setCurrentQuestion}
-                />
+class QuestionActionButtons extends React.Component{
+    constructor(props){
+        super(props);
+        this.handlePreviousClick = this.handlePreviousClick.bind(this);
+        this.handleNextClick = this.handleNextClick.bind(this);
+    }
+
+    handlePreviousClick(){
+        const {questionIDs, currentQuestion, gotoQuestion} = this.props;
+        const prevIndex = questionIDs.indexOf(currentQuestion.id.toString()) - 1;
+        gotoQuestion(questionIDs[prevIndex]);
+    }
+
+    handleNextClick(){
+        const {questionIDs, currentQuestion, gotoQuestion} = this.props;
+        const nextIndex = questionIDs.indexOf(currentQuestion.id.toString()) + 1;
+        gotoQuestion(questionIDs[nextIndex]);
+    }
+
+    render(){
+        const {currentQuestion, handleClearClick, handleMarkClick} = this.props;
+        return(
+            <div className="questionBottomButtonsWrapper">
+                <PreviousButton 
+                    handleClick={this.handlePreviousClick}/>
+                <div className="questionBottomButtonsClearMarkNextButtonWrapper">
+                    <ClearButton
+                        handleClick={()=>{handleClearClick(currentQuestion.id)}}
+                    />
+                    <MarkButton 
+                        handleClick={()=>{handleMarkClick(currentQuestion.id)}}
+                    />
+                    <NextButton 
+                        handleClick={this.handleNextClick}
+                    />
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default QuestionActionButtons;

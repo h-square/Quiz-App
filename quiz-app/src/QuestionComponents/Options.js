@@ -1,30 +1,20 @@
 import React from 'react';
+import {nanoid} from 'nanoid';
 
 class Options extends React.Component{
-    constructor(props){
-        super(props);
-
-        this.handleRadioButtons = this.handleRadioButtons.bind(this);
-    }
-
-    handleRadioButtons(e){
-        if(this.props.selectedOptionOfQuestions[this.props.currentQuestion.id-1]===null){
-            this.props.incrementNumberOfAnsweredQuestions();
-        }
-        this.props.setSelectedOptionOfCurrentQuestion(parseInt(e.target.value));
-    }
-
     render(){
-        const options = this.props.currentQuestion.options.map((option,index)=>{
+        const {currentQuestion, answeredOption, changeAnswer} = this.props;
+        const options = currentQuestion.options.map((option,index)=>{
             return(
-                <label key={index} className="questionAndOptionsOption">
-                    <input 
+                <label key={nanoid()} className="questionAndOptionsOption">
+                    <input
                         className="questionAndOptionsOptionSelector" 
                         name="questionAndOptionsOptionSelectorGroup" 
                         type="radio" 
                         value={index} 
-                        onChange={this.handleRadioButtons} 
-                        checked={this.props.selectedOptionOfQuestions[this.props.currentQuestion.id - 1]===index}/>
+                        onChange={()=>{changeAnswer(currentQuestion.id,option.id)}} 
+                        checked={option.id===answeredOption}
+                    />
                     <p className="questionAndOptionsOptionText">{option.value}</p>
                 </label>
             );
