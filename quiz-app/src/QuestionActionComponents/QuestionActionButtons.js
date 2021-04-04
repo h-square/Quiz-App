@@ -1,9 +1,7 @@
 import React from 'react';
+import { classLists, classNames, ids } from '../registry';
 
-import ClearButton from './ClearButton';
-import MarkButton from './MarkButton';
-import NextButton from './NextButton';
-import PreviousButton from './PreviousButton';
+import Button from './Button';
 
 class QuestionActionButtons extends React.Component{
     constructor(props){
@@ -27,18 +25,30 @@ class QuestionActionButtons extends React.Component{
     render(){
         const {currentQuestion, handleClearClick, handleMarkClick} = this.props;
         return(
-            <div className="questionBottomButtonsWrapper">
-                <PreviousButton 
-                    handleClick={this.handlePreviousClick}/>
-                <div className="questionBottomButtonsClearMarkNextButtonWrapper">
-                    <ClearButton
+            <div className={classNames.BOTTOM_BUTTONS_WRAPPER}>
+                <Button 
+                    id={ids.PREV_BUTTON} 
+                    handleClick={this.handlePreviousClick}
+                    name="Previous"
+                    iconClassList={classLists.PREV_ICON}
+                />
+                <div className={classNames.CLEAR_MARK_NEXT_BUTTON}>
+                    <Button 
+                        id={ids.CLEAR_BUTTON} 
                         handleClick={()=>{handleClearClick(currentQuestion.id)}}
+                        name="Clear"
                     />
-                    <MarkButton 
+                    <Button 
+                        id={ids.MARK_BUTTON} 
                         handleClick={()=>{handleMarkClick(currentQuestion.id)}}
+                        name="Mark"
+                        iconClassList={classLists.MARK_ICON}
                     />
-                    <NextButton 
+                    <Button 
+                        id={ids.NEXT_BUTTON} 
                         handleClick={this.handleNextClick}
+                        name="Next"
+                        iconClassList={classLists.NEXT_ICON}
                     />
                 </div>
             </div>

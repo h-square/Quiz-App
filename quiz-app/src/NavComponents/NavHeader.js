@@ -1,4 +1,5 @@
 import React from 'react';
+import { classNames, ids } from '../registry';
 
 class NavHeader extends React.Component{
     constructor(props){
@@ -22,9 +23,9 @@ class NavHeader extends React.Component{
 
     render(){
         return(
-            <div className="quizEndTest">
-                <h6 className="quizTitle">Mock Test - 1</h6>
-                <button id="quizEndButton" onClick={this.handleEndTest}>End test</button>
+            <div className={classNames.END_TEST}>
+                <h6 className={classNames.QUIZ_TITLE}>Mock Test - 1</h6>
+                <button id={ids.END_BUTTON} onClick={this.handleEndTest}>End test</button>
             </div>
         );
     }

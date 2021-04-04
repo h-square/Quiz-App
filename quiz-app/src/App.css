@@ -13,7 +13,7 @@
     position: relative;
 }
 
-.quizQuestionWrapper{
+.leftViewWrapper{
     width: 95.62rem;
     min-height: 100%;
     background-color: rgb(252,252,252);
@@ -28,12 +28,6 @@
     position: absolute;
     top: 0px;
     right: 0px;
-}
-
-.quizNavWrapperFixed{
-    position: fixed;
-    height: inherit;
-    width: inherit;
 }
 
 .quizHeader{
@@ -144,7 +138,7 @@ button{
     text-transform: none;
 }
 
-#questionBottomButtonsPrevButton{
+#questionBottomButtonsPrevButton, #questionBottomButtonsClearButton, #questionBottomButtonsMarkButton{
     position: relative;
     border-width: 1px;
     border-style: solid;
@@ -175,23 +169,6 @@ button{
 }
 
 #questionBottomButtonsClearButton, #questionBottomButtonsMarkButton{
-    position: relative;
-    border-width: 2px;
-    border-style: solid;
-    border-color: rgb(240, 244, 247);
-    display: flex;
-    justify-content: center;
-    font-size: 1.6rem;
-    font-weight: bold;
-    align-items: center;
-    cursor: pointer;
-    border-radius: 4px;
-    width: 12.8rem;
-    height: 4.8rem;
-    min-height: 4.8rem;
-    color: rgb(60, 72, 82);
-    user-select: none;
-    background-color: rgb(255, 255, 255);
     margin-right: 1.6rem;
 }
 
@@ -220,7 +197,7 @@ button{
 
 .nextButtonIcon{
     display: flex;
-    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 .quizEndTest{
@@ -263,14 +240,7 @@ button{
     transition: transform 0.2s ease 0s;
 }
 
-#quizNav{
-    overflow: auto;
-    background-color: rgb(255, 255, 255);
-}
 
-.quizNavSection{
-    position: relative;
-}
 
 .quizNavSectionInfo{
     display: flex;
@@ -312,37 +282,28 @@ button{
     margin-bottom: 16px;
 }
 
-.quizNavSectionSummaryDotAnswered{
+.dot{
     height: 8px;
     width: 8px;
     border-radius: 4px;
+    border-width: 1px;
+    border-style: solid;
+    margin-right: 8px;
+}
+
+.greyDot{
     background-color: rgb(143, 163, 178);
     border-color: rgb(143, 163, 178);
-    border-width: 1px;
-    border-style: solid;
-    margin-right: 8px;
 }
 
-.quizNavSectionSummaryDotMarked{
-    height: 8px;
-    width: 8px;
-    border-radius: 4px;
+.yellowDot{
     background-color: rgb(255, 173, 59);
     border-color: rgb(255, 173, 59);
-    border-width: 1px;
-    border-style: solid;
-    margin-right: 8px;
 }
 
-.quizNavSectionSummaryDotUnanswered{
-    height: 8px;
-    width: 8px;
-    border-radius: 4px;
+.whiteDot{
     background-color: rgb(255, 255, 255);
     border-color: rgb(143, 163, 178);
-    border-width: 1px;
-    border-style: solid;
-    margin-right: 8px;
 }
 
 .quizNavSectionSummaryText{

@@ -1,27 +1,34 @@
 import React from 'react';
+import { classNames } from '../registry';
 
 function NavSectionSummary(props){
     const {answeredCount, markedCount, unansweredCount} = props;
+    const summaries = [
+        {
+            dotClass : "greyDot",
+            text : answeredCount + " answered"
+        },
+        {
+            dotClass : "yellowDot",
+            text : markedCount + " marked"
+        },
+        {
+            dotClass : "whiteDot",
+            text : unansweredCount + " unanswered"
+        }
+    ];
     return(
-        <div className="quizNavSectionSummaryRow">
-            <div className="quizNavSectionSummary">
-                <div className="quizNavSectionSummaryDotAnswered"></div>
-                <h6 className="quizNavSectionSummaryText">
-                    {answeredCount} answered
-                </h6>
-            </div>
-            <div className="quizNavSectionSummary">
-                <div className="quizNavSectionSummaryDotMarked"></div>
-                <h6 className="quizNavSectionSummaryText">
-                    {markedCount} marked
-                </h6>
-            </div>
-            <div className="quizNavSectionSummary">
-                <div className="quizNavSectionSummaryDotUnanswered"></div>
-                <h6 className="quizNavSectionSummaryText">
-                    {unansweredCount} unanswered
-                </h6>
-            </div>
+        <div className={classNames.SECTION_SUMMARY_ROW}>
+            {summaries.map((summary)=>{
+                return (
+                    <div className={classNames.SECTION_SUMMARY}>
+                        <div className={"dot " + summary.dotClass}></div>
+                        <h6 className={classNames.SECTION_SUMMARY_TEXT}>
+                            {summary.text}
+                        </h6>
+                    </div>
+                );
+            })}
         </div>
     );
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import _ from 'lodash';
+import {classNames, dataLinks} from './registry.js';
 
 import Header from './HeaderComponents/index.js';
 import QuestionWrapper from './QuestionComponents/index.js';
@@ -25,7 +26,7 @@ class App extends React.Component{
 	}
 
 	componentDidMount(){
-		fetch('./JSON/questions.json')
+		fetch(dataLinks.MATHS)
 			.then( response => response.json())
 			.then( data => {
 				const questions = _.keyBy(data,function(o){
@@ -88,9 +89,9 @@ class App extends React.Component{
 			);
 		}
 		return (
-			<div className="container">
-				<div className="quizAttemptWrapper">
-					<div className="quizQuestionWrapper">
+			<div className={classNames.CONTAINER}>
+				<div className={classNames.QUIZ_WRAPPER}>
+					<div className={classNames.LEFT_VIEW_WRAPPER}>
 						<Header />
 						<QuestionWrapper
 							questionNumber = {_.keys(this.state.questions).indexOf(this.state.currentQuestion.id.toString()) + 1}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ids } from '../registry';
 
 class TimerCountDown extends React.Component{
     constructor(props){
@@ -35,7 +36,7 @@ class TimerCountDown extends React.Component{
         const seconds = this.state.remainingSeconds%60;
         const timeLeft = ("0" + hours).slice(-2) + " : " + ("0" + minutes).slice(-2) + " : " + ("0" + seconds).slice(-2);
         return(
-            <div id="timerCountdown">
+            <div id={ids.TIMER}>
                 {timeLeft}
             </div>
         );
