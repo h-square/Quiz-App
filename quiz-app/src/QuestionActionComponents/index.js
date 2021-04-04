@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { classLists, classNames, ids } from '../registry';
 
 import Button from './Button';
@@ -54,6 +55,37 @@ class QuestionActionButtons extends React.Component{
             </div>
         );
     }
+}
+
+QuestionActionButtons.propTypes = {
+    questionIDs : PropTypes.arrayOf(PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string
+    ])).isRequired,
+
+    currentQuestion : PropTypes.shape({
+        id : PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string
+        ]).isRequired,
+
+        question : PropTypes.string.isRequired,
+
+        options : PropTypes.arrayOf(PropTypes.shape({
+            id : PropTypes.oneOfType([
+                PropTypes.number,
+                PropTypes.string
+            ]).isRequired,
+
+            value : PropTypes.any.isRequired
+        })).isRequired
+    }).isRequired,
+
+    handleClearClick : PropTypes.func.isRequired,
+
+    handleMarkClick : PropTypes.func.isRequired,
+
+    gotoQuestion : PropTypes.func.isRequired
 }
 
 export default QuestionActionButtons;

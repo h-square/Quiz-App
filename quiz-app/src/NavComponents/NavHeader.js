@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { classNames, ids } from '../registry';
 
 class NavHeader extends React.Component{
@@ -8,12 +9,13 @@ class NavHeader extends React.Component{
     }
 
     handleEndTest(){
+        const {unansweredCount} = this.props;
         let warning;
-        if(!this.props.unansweredCount){
+        if(!unansweredCount){
             warning = "You have answered all the questions!";
         }
         else{
-            warning = "You have not answered " + this.props.unansweredCount + " questions!";
+            warning = "You have not answered " + unansweredCount + " questions!";
         }
         warning = warning + "\nAre you sure you want to end the test?"
         if(window.confirm(warning)){
@@ -29,6 +31,10 @@ class NavHeader extends React.Component{
             </div>
         );
     }
+}
+
+NavHeader.propTypes = {
+    unansweredCount : PropTypes.number.isRequired
 }
 
 export default NavHeader;

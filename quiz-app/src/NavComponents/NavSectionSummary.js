@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { classNames } from '../registry';
+import {nanoid} from 'nanoid';
 
 function NavSectionSummary(props){
     const {answeredCount, markedCount, unansweredCount} = props;
@@ -21,7 +23,7 @@ function NavSectionSummary(props){
         <div className={classNames.SECTION_SUMMARY_ROW}>
             {summaries.map((summary)=>{
                 return (
-                    <div className={classNames.SECTION_SUMMARY}>
+                    <div key={nanoid()} className={classNames.SECTION_SUMMARY}>
                         <div className={"dot " + summary.dotClass}></div>
                         <h6 className={classNames.SECTION_SUMMARY_TEXT}>
                             {summary.text}
@@ -31,6 +33,14 @@ function NavSectionSummary(props){
             })}
         </div>
     );
+}
+
+NavSectionSummary.propTypes = {
+    answeredCount : PropTypes.number.isRequired,
+
+    markedCount : PropTypes.number.isRequired,
+
+    unansweredCount : PropTypes.number.isRequired
 }
 
 export default NavSectionSummary;

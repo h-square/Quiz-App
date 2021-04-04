@@ -1,9 +1,11 @@
 import React from 'react';
+import _ from 'lodash';
+import PropTypes from 'prop-types';
+
 import NavHeader from './NavHeader.js';
 import NavSectionSummary from './NavSectionSummary.js';
 import QuestionSelectorGrid from './QuestionSelectorGrid.js';
-import _ from 'lodash';
-import { classLists, classNames } from '../registry.js';
+import { classNames } from '../registry.js';
 
 function NavWrapper(props){
     const {questions, answeredQuestions, markedQuestions, setCurrentQuestion} = props;
@@ -29,6 +31,32 @@ function NavWrapper(props){
             />
         </div>
     );
+}
+
+NavWrapper.propTypes = {
+    questions : PropTypes.objectOf(PropTypes.shape({
+        id : PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string
+        ]).isRequired,
+
+        question : PropTypes.string.isRequired,
+
+        options : PropTypes.arrayOf(PropTypes.shape({
+            id : PropTypes.oneOfType([
+                PropTypes.number,
+                PropTypes.string
+            ]).isRequired,
+
+            value : PropTypes.any.isRequired
+        })).isRequired
+    })).isRequired,
+
+    answeredQuestions : PropTypes.instanceOf(Map).isRequired,
+
+    markedQuestions : PropTypes.instanceOf(Set).isRequired,
+
+    setCurrentQuestion : PropTypes.func.isRequired
 }
 
 export default NavWrapper;

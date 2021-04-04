@@ -5,7 +5,7 @@ import {classNames, dataLinks} from './registry.js';
 
 import Header from './HeaderComponents/index.js';
 import QuestionWrapper from './QuestionComponents/index.js';
-import QuestionActionButtons from './QuestionActionComponents/QuestionActionButtons.js';
+import QuestionActionButtons from './QuestionActionComponents/index.js';
 import NavWrapper from './NavComponents/index.js';
 
 class App extends React.Component{

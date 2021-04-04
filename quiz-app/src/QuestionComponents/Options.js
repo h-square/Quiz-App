@@ -1,5 +1,6 @@
 import React from 'react';
 import {nanoid} from 'nanoid';
+import PropTypes from 'prop-types';
 import { classNames, ids } from '../registry';
 
 function Options(props){
@@ -24,6 +25,33 @@ function Options(props){
             {options}
         </div>
     );
+}
+
+Options.propTypes = {
+    currentQuestion : PropTypes.shape({
+        id : PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.string
+        ]).isRequired,
+
+        question : PropTypes.string.isRequired,
+
+        options : PropTypes.arrayOf(PropTypes.shape({
+            id : PropTypes.oneOfType([
+                PropTypes.number,
+                PropTypes.string
+            ]).isRequired,
+
+            value : PropTypes.any.isRequired
+        })).isRequired
+    }).isRequired,
+
+    answeredOption : PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string
+    ]),
+
+    changeAnswer : PropTypes.func.isRequired
 }
 
 export default Options;
