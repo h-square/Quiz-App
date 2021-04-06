@@ -1,8 +1,13 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import { classLists, classNames, ids } from '../registry';
 
 import Button from './Button';
+import {removeAnswerOfQuestion} from '../Redux/actions/answeredQuestionsActions';
+import { toggleMark } from '../Redux/actions/markedQuestionsActions';
+import _ from 'lodash';
+import { setCurrentQuestion } from '../Redux/actions/questionsActions';
 
 class QuestionActionButtons extends React.Component{
     constructor(props){
@@ -88,4 +93,19 @@ QuestionActionButtons.propTypes = {
     gotoQuestion : PropTypes.func.isRequired
 }
 
-export default QuestionActionButtons;
+const mapStateToProps = (state) =>{
+    return{
+        questionIDs : _.keys(state.questionsReducer.questions),
+        currentQuestion : state.questionsReducer.currentQuestion
+    }
+}
+
+const mapDispathToProps = (dispatch) =>{
+    return{
+        gotoQuestion : (questionID) => {dispatch(setCurrentQuestion(questionID))},
+        handleClearClick : (questionID) => {dispatch(removeAnswerOfQuestion(questionID))},
+        handleMarkClick : (questionID) => {dispatch(toggleMark(questionID))}
+    }
+}
+
+export default connect(mapStateToProps, mapDispathToProps)(QuestionActionButtons);

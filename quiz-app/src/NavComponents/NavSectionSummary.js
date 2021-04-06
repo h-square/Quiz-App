@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { classNames } from '../registry';
 import {nanoid} from 'nanoid';
+import {connect} from 'react-redux';
+import _ from 'lodash';
 
 function NavSectionSummary(props){
     const {answeredCount, markedCount, unansweredCount} = props;
@@ -43,4 +45,12 @@ NavSectionSummary.propTypes = {
     unansweredCount : PropTypes.number.isRequired
 }
 
-export default NavSectionSummary;
+const mapStateToProps = (state) =>{
+    return{
+        answeredCount : state.answeredQuestionsReducer.answeredQuestions.size,
+        markedCount : state.markedQuestionsReducer.markedQuestions.size,
+        unansweredCount : _.size(state.questionsReducer.questions) - state.answeredQuestionsReducer.answeredQuestions.size
+    }
+}
+
+export default connect(mapStateToProps)(NavSectionSummary);

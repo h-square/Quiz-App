@@ -1,7 +1,9 @@
 import React from 'react';
 import {nanoid} from 'nanoid';
 import PropTypes from 'prop-types';
-import { classNames, ids } from '../registry';
+import { classNames, ids } from '../registry.js';
+import {connect} from 'react-redux';
+import {addAnswerOfQuestion} from '../Redux/actions/answeredQuestionsActions.js';
 
 function Options(props){
     const {currentQuestion, answeredOption, changeAnswer} = props;
@@ -54,4 +56,19 @@ Options.propTypes = {
     changeAnswer : PropTypes.func.isRequired
 }
 
-export default Options;
+const mapStateToProps = (state) =>{
+    return{
+        currentQuestion : state.questionsReducer.currentQuestion,
+        answeredOption : state.answeredQuestionsReducer.answeredQuestions.get(state.questionsReducer.currentQuestion.id)
+    }
+}
+
+const mapDispathToProps = (dispatch) =>{
+    return{
+        changeAnswer : (questionID, optionID) =>{
+            dispatch(addAnswerOfQuestion(questionID, optionID));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispathToProps)(Options);

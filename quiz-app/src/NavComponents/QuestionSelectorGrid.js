@@ -2,6 +2,8 @@ import React from 'react';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { classNames, ids } from '../registry';
+import {connect} from 'react-redux';
+import { setCurrentQuestion } from '../Redux/actions/questionsActions';
 
 function QuestionSelectorGrid(props){
     const {questions, answeredQuestions, markedQuestions, handleClick} = props;
@@ -57,4 +59,18 @@ QuestionSelectorGrid.propTypes = {
     handleClick : PropTypes.func.isRequired
 }
 
-export default QuestionSelectorGrid;
+const mapStateToProps = (state) =>{
+    return{
+        questions : state.questionsReducer.questions,
+        answeredQuestions : state.answeredQuestionsReducer.answeredQuestions,
+        markedQuestions : state.markedQuestionsReducer.markedQuestions
+    }
+}
+
+const mapDispathToProps = (dispatch) =>{
+    return{
+        handleClick : (questionID)=>{dispatch(setCurrentQuestion(questionID))}
+    }
+}
+
+export default connect(mapStateToProps, mapDispathToProps)(QuestionSelectorGrid);

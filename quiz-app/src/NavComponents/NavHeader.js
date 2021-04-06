@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { classNames, ids } from '../registry';
+import _ from 'lodash';
+import {connect} from 'react-redux';
 
 class NavHeader extends React.Component{
     constructor(props){
@@ -37,4 +39,10 @@ NavHeader.propTypes = {
     unansweredCount : PropTypes.number.isRequired
 }
 
-export default NavHeader;
+const mapStateToProps = (state)=>{
+    return{
+        unansweredCount : _.size(state.questionsReducer.questions) - state.answeredQuestionsReducer.answeredQuestions.size
+    }
+}
+
+export default connect(mapStateToProps)(NavHeader);

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { classNames, ids } from '../registry';
+import {connect} from 'react-redux';
+import _ from 'lodash';
 
 function Question(props){
     const {questionNumber, questionText} = props;
@@ -18,4 +20,11 @@ Question.propTypes = {
     questionText : PropTypes.string.isRequired
 }
 
-export default Question;
+const mapStateToProps = (state) =>{
+    return{
+        questionNumber : _.keys(state.questionsReducer.questions).indexOf(state.questionsReducer.currentQuestion.id.toString()) + 1,
+        questionText : state.questionsReducer.currentQuestion.question
+    }
+}
+
+export default connect(mapStateToProps)(Question);
